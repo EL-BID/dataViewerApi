@@ -1,0 +1,13 @@
+footer {
+    visibility: hidden;
+}
+
+#MainMenu {
+    visibility: hidden;
+}
+
+div.leaflet-container.leaflet-touch.leaflet-fade-anim.leaflet-grab.leaflet-touch-drag.leaflet-touch-zoom {
+    width: 100%;
+}
+
+[title~="st.iframe"] { width: 100%}
