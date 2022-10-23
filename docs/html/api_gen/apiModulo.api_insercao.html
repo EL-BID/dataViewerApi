@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="pt-br" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ApiIns &mdash; PDC-Vem Pro Centro 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ApiVis" href="apiModulo.api_visualizacao.html" />
+    <link rel="prev" title="ApiConsulta" href="apiModulo.api_consulta.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> PDC-Vem Pro Centro
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Conteúdo:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../sobre.html">Sobre</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pdc.html">Provas de Conceito</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Como Usar</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">PDC-API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="apiModulo.api_consulta.html">ApiConsulta</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ApiIns</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#apiModulo.api_insercao.ApiIns"><code class="docutils literal notranslate"><span class="pre">ApiIns</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#apiModulo.api_insercao.ApiIns.inserirCamada"><code class="docutils literal notranslate"><span class="pre">ApiIns.inserirCamada()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#apiModulo.api_insercao.ApiIns.inserirDados"><code class="docutils literal notranslate"><span class="pre">ApiIns.inserirDados()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#apiModulo.api_insercao.ApiIns.inserirIndicador"><code class="docutils literal notranslate"><span class="pre">ApiIns.inserirIndicador()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#apiModulo.api_insercao.ApiIns.removerIndicador"><code class="docutils literal notranslate"><span class="pre">ApiIns.removerIndicador()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="apiModulo.api_visualizacao.html">ApiVis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exemplos/criando_camada.html">Criando uma camada</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exemplos/criando_indicadores.html">Inserindo indicadores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exemplos/cruzamento_lotes.html">Exemplo de junção espacial</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pdcvis.html">PDC-Visualização</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PDC-Vem Pro Centro</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../api.html">PDC-API</a> &raquo;</li>
+      <li>ApiIns</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api_gen/apiModulo.api_insercao.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="apiins">
+<h1>ApiIns<a class="headerlink" href="#apiins" title="Permalink to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="apiModulo.api_insercao.ApiIns">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">apiModulo.api_insercao.</span></span><span class="sig-name descname"><span class="pre">ApiIns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">host</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiModulo.api_insercao.ApiIns" title="Permalink to this definition"></a></dt>
+<dd><p>Classe com as especificações para criação de indicadores e inserção de informação</p>
+<p class="rubric">Membros</p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#apiModulo.api_insercao.ApiIns.inserirDados" title="apiModulo.api_insercao.ApiIns.inserirDados"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ApiIns.inserirDados</span></code></a>(data, nome_tabela[, ...])</p></td>
+<td><p>Insere dados no banco de dados, baseado numa entrada e especificação de camada quando por o caso</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#apiModulo.api_insercao.ApiIns.inserirCamada" title="apiModulo.api_insercao.ApiIns.inserirCamada"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ApiIns.inserirCamada</span></code></a>(dado, tabela[, tipo, ...])</p></td>
+<td><p>Insere dados geografico no banco de dados, geopandas ou string para o shapefile</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#apiModulo.api_insercao.ApiIns.inserirIndicador" title="apiModulo.api_insercao.ApiIns.inserirIndicador"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ApiIns.inserirIndicador</span></code></a>(tema, assunto, ...)</p></td>
+<td><p>Inserir indicador no banco de dados</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#apiModulo.api_insercao.ApiIns.removerIndicador" title="apiModulo.api_insercao.ApiIns.removerIndicador"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ApiIns.removerIndicador</span></code></a>(id)</p></td>
+<td><p>Remove indicador no banco de dados</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="apiModulo.api_insercao.ApiIns.inserirCamada">
+<span class="sig-name descname"><span class="pre">inserirCamada</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dado</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tabela</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tipo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'MULTIPOLYGON'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">campo_chave</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nome</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">descricao</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiModulo.api_insercao.ApiIns.inserirCamada" title="Permalink to this definition"></a></dt>
+<dd><p>Insere dados geografico no banco de dados, geopandas ou string para o shapefile</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dado</strong> – Path do arquivo(csv) ou objeto geopandas</p></li>
+<li><p><strong>tabela</strong> – Nome da tabela a ser criada na base de dados</p></li>
+<li><p><strong>tipo</strong> – Tipo de dado geo, MULTIPOLYGON, POINT, LINE</p></li>
+<li><p><strong>campo_chave</strong> – nome da coluna no geopandas que representa a chave dos dados</p></li>
+<li><p><strong>nome</strong> – nome dado a camada, para referência nos Indicadores</p></li>
+<li><p><strong>delimiter</strong> – Delimitador de coluna se carregar de csv. Padrão ‘;’</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apiModulo.api_insercao.ApiIns.inserirDados">
+<span class="sig-name descname"><span class="pre">inserirDados</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nome_tabela</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indice</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camada</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">campo_camada</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delimiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">';'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiModulo.api_insercao.ApiIns.inserirDados" title="Permalink to this definition"></a></dt>
+<dd><p>Insere dados no banco de dados, baseado numa entrada e especificação de camada quando por o caso</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Path do arquivo(csv) ou objeto pandas</p></li>
+<li><p><strong>indice</strong> – Coluna a ser usada como chave primária. Quando não informado usa o index sequencial do pandas</p></li>
+<li><p><strong>nome_tabela</strong> – Nome da tabela destino no banco de dados</p></li>
+<li><p><strong>delimiter</strong> – Delimitador de coluna se carregar de csv. Padrão ‘;’</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apiModulo.api_insercao.ApiIns.inserirIndicador">
+<span class="sig-name descname"><span class="pre">inserirIndicador</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tema</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">assunto</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tabela</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">definicao</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">descricao</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fonte</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ano</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camada</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_indicador</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiModulo.api_insercao.ApiIns.inserirIndicador" title="Permalink to this definition"></a></dt>
+<dd><p>Inserir indicador no banco de dados</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tema</strong> – Tema do indicador(ex: Responsável, Domicílio, Pessoa)</p></li>
+<li><p><strong>assunto</strong> – Assuntos do indicador, separados por vírgula(ex:Cor ou Raça, idade e gênero)</p></li>
+<li><p><strong>tabela</strong> – Tabela que o indicador está apontando</p></li>
+<li><p><strong>definicao</strong> – Coluna da tabela que o indicador está apontando</p></li>
+<li><p><strong>descricao</strong> – Descrição do indicador que aparece no mapa</p></li>
+<li><p><strong>fonte</strong> – De onde o indicador foi retirado(ex: IBGE Censo Demográfico 2010)</p></li>
+<li><p><strong>ano</strong> – Ano da fonte do indicador</p></li>
+<li><p><strong>camada</strong> – Número da camada que o indicador está apontando. Camada 1 por padrão</p></li>
+<li><p><strong>id_indicador</strong> – Código do ID do indicador. Padrão None.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apiModulo.api_insercao.ApiIns.removerIndicador">
+<span class="sig-name descname"><span class="pre">removerIndicador</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiModulo.api_insercao.ApiIns.removerIndicador" title="Permalink to this definition"></a></dt>
+<dd><p>Remove indicador no banco de dados</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> – Código do ID do indicador.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="apiModulo.api_consulta.html" class="btn btn-neutral float-left" title="ApiConsulta" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="apiModulo.api_visualizacao.html" class="btn btn-neutral float-right" title="ApiVis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Geraldo Braz Júnior e Anselmo Cardoso de Paiva.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
