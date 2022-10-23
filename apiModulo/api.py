@@ -114,4 +114,5 @@ def somarColunas(dados):
     lst.remove('index')
 
     dados['soma'] = dados[lst].sum(axis=1)
+    dados.drop(lst, axis=1, inplace=True)
     return dados
