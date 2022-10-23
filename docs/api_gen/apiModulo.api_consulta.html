@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="pt-br" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ApiConsulta &mdash; PDC-Vem Pro Centro 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ApiIns" href="apiModulo.api_insercao.html" />
+    <link rel="prev" title="PDC-API" href="../api.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> PDC-Vem Pro Centro
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Conteúdo:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../sobre.html">Sobre</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pdc.html">Provas de Conceito</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Como Usar</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">PDC-API</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ApiConsulta</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#apiModulo.api_consulta.ApiConsulta"><code class="docutils literal notranslate"><span class="pre">ApiConsulta</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#apiModulo.api_consulta.ApiConsulta.limparDados"><code class="docutils literal notranslate"><span class="pre">ApiConsulta.limparDados()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#apiModulo.api_consulta.ApiConsulta.lstCamadas"><code class="docutils literal notranslate"><span class="pre">ApiConsulta.lstCamadas()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#apiModulo.api_consulta.ApiConsulta.lstIndicador"><code class="docutils literal notranslate"><span class="pre">ApiConsulta.lstIndicador()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#apiModulo.api_consulta.ApiConsulta.lstTema"><code class="docutils literal notranslate"><span class="pre">ApiConsulta.lstTema()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#apiModulo.api_consulta.ApiConsulta.obterCamada"><code class="docutils literal notranslate"><span class="pre">ApiConsulta.obterCamada()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#apiModulo.api_consulta.ApiConsulta.obterIndicador"><code class="docutils literal notranslate"><span class="pre">ApiConsulta.obterIndicador()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#apiModulo.api_consulta.ApiConsulta.obterMetadados"><code class="docutils literal notranslate"><span class="pre">ApiConsulta.obterMetadados()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#apiModulo.api_consulta.ApiConsulta.obterTabela"><code class="docutils literal notranslate"><span class="pre">ApiConsulta.obterTabela()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#apiModulo.api_consulta.ApiConsulta.obterTema"><code class="docutils literal notranslate"><span class="pre">ApiConsulta.obterTema()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#apiModulo.api_consulta.ApiConsulta.obterTemaSoma"><code class="docutils literal notranslate"><span class="pre">ApiConsulta.obterTemaSoma()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="apiModulo.api_insercao.html">ApiIns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiModulo.api_visualizacao.html">ApiVis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pdcvis.html">PDC-Visualização</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exemplos.html">Exemplos</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PDC-Vem Pro Centro</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../api.html">PDC-API</a> &raquo;</li>
+      <li>ApiConsulta</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api_gen/apiModulo.api_consulta.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="apiconsulta">
+<h1>ApiConsulta<a class="headerlink" href="#apiconsulta" title="Permalink to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="apiModulo.api_consulta.ApiConsulta">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">apiModulo.api_consulta.</span></span><span class="sig-name descname"><span class="pre">ApiConsulta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">host</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/apiModulo/api_consulta.html#ApiConsulta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apiModulo.api_consulta.ApiConsulta" title="Permalink to this definition"></a></dt>
+<dd><p>Classe com as especificações de acesso e manipulação dos dados</p>
+<p class="rubric">Membros</p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#apiModulo.api_consulta.ApiConsulta.limparDados" title="apiModulo.api_consulta.ApiConsulta.limparDados"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ApiConsulta.limparDados</span></code></a>(dados)</p></td>
+<td><p>Remover caracteres em dados que deveriam ser numéricos</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#apiModulo.api_consulta.ApiConsulta.lstCamadas" title="apiModulo.api_consulta.ApiConsulta.lstCamadas"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ApiConsulta.lstCamadas</span></code></a>([filtro])</p></td>
+<td><p>Obtem lista das camadas presentes na Base</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#apiModulo.api_consulta.ApiConsulta.lstIndicador" title="apiModulo.api_consulta.ApiConsulta.lstIndicador"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ApiConsulta.lstIndicador</span></code></a>([filtro, tema, assunto])</p></td>
+<td><p>Obtem os Indicadores presentes na base, filtrando por qualquer termo, tema ou assunto</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#apiModulo.api_consulta.ApiConsulta.lstTema" title="apiModulo.api_consulta.ApiConsulta.lstTema"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ApiConsulta.lstTema</span></code></a>([filtro])</p></td>
+<td><p>Obtem lista de temas cadastrados em Indicadores</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#apiModulo.api_consulta.ApiConsulta.obterCamada" title="apiModulo.api_consulta.ApiConsulta.obterCamada"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ApiConsulta.obterCamada</span></code></a>([nome_tabela, ...])</p></td>
+<td><p>Obtém todos os dados de uma tabela do tipo camada (tem suporte espacial).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#apiModulo.api_consulta.ApiConsulta.obterIndicador" title="apiModulo.api_consulta.ApiConsulta.obterIndicador"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ApiConsulta.obterIndicador</span></code></a>([index, tabela, ...])</p></td>
+<td><p>Obtém dados de um Indicador</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#apiModulo.api_consulta.ApiConsulta.obterMetadados" title="apiModulo.api_consulta.ApiConsulta.obterMetadados"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ApiConsulta.obterMetadados</span></code></a>([tema, indexes])</p></td>
+<td><p>Obtem as descrições dos indicadores, contendo definição e camada</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#apiModulo.api_consulta.ApiConsulta.obterTabela" title="apiModulo.api_consulta.ApiConsulta.obterTabela"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ApiConsulta.obterTabela</span></code></a>([nome_tabela])</p></td>
+<td><p>Obtém todos os dados de uma tabela.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#apiModulo.api_consulta.ApiConsulta.obterTema" title="apiModulo.api_consulta.ApiConsulta.obterTema"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ApiConsulta.obterTema</span></code></a>([tema, indexes])</p></td>
+<td><p>Obtem os dados na forma de um pandas/geopandas.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#apiModulo.api_consulta.ApiConsulta.obterTemaSoma" title="apiModulo.api_consulta.ApiConsulta.obterTemaSoma"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ApiConsulta.obterTemaSoma</span></code></a>([tema, indexes])</p></td>
+<td><p>Obtém os dados dos indicadores e soma seus resultados.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="apiModulo.api_consulta.ApiConsulta.limparDados">
+<span class="sig-name descname"><span class="pre">limparDados</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dados</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/apiModulo/api_consulta.html#ApiConsulta.limparDados"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apiModulo.api_consulta.ApiConsulta.limparDados" title="Permalink to this definition"></a></dt>
+<dd><p>Remover caracteres em dados que deveriam ser numéricos</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dados</strong> – dataframe/geodataframe com os dados</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Dados pós-processados</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>geopandas</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apiModulo.api_consulta.ApiConsulta.lstCamadas">
+<span class="sig-name descname"><span class="pre">lstCamadas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filtro</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/apiModulo/api_consulta.html#ApiConsulta.lstCamadas"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apiModulo.api_consulta.ApiConsulta.lstCamadas" title="Permalink to this definition"></a></dt>
+<dd><p>Obtem lista das camadas presentes na Base</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filtro</strong> – filtro de nome</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Lista de camadas presentes na base</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dataframe - pandas</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apiModulo.api_consulta.ApiConsulta.lstIndicador">
+<span class="sig-name descname"><span class="pre">lstIndicador</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filtro</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tema</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">assunto</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/apiModulo/api_consulta.html#ApiConsulta.lstIndicador"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apiModulo.api_consulta.ApiConsulta.lstIndicador" title="Permalink to this definition"></a></dt>
+<dd><p>Obtem os Indicadores presentes na base, filtrando por qualquer termo, tema ou assunto</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filtro</strong> – campo de texto que deve ser utilizado como filtro nos campos de tema, assunto e descrição</p></li>
+<li><p><strong>tema</strong> – filtra especificamente por tema</p></li>
+<li><p><strong>assunto</strong> – filtra especificamente por assunto</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Resultados organizados como tema, assunto, descrição, fonte, tabela, definição, tabela</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dataframe - pandas</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apiModulo.api_consulta.ApiConsulta.lstTema">
+<span class="sig-name descname"><span class="pre">lstTema</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filtro</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/apiModulo/api_consulta.html#ApiConsulta.lstTema"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apiModulo.api_consulta.ApiConsulta.lstTema" title="Permalink to this definition"></a></dt>
+<dd><p>Obtem lista de temas cadastrados em Indicadores</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filtro</strong> – filtro sobre o campo tema</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Lista de temas presentes na base</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dataframe - pandas</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apiModulo.api_consulta.ApiConsulta.obterCamada">
+<span class="sig-name descname"><span class="pre">obterCamada</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nome_tabela</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simples</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">campo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filtro</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/apiModulo/api_consulta.html#ApiConsulta.obterCamada"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apiModulo.api_consulta.ApiConsulta.obterCamada" title="Permalink to this definition"></a></dt>
+<dd><p>Obtém todos os dados de uma tabela do tipo camada (tem suporte espacial). 
+Não deve ser usado para dados de indicadores.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nome_tabela</strong> – nome da tabela no banco</p></li>
+<li><p><strong>simples</strong> – quando True retorna apenas cod_camada e geometria</p></li>
+<li><p><strong>campo</strong> – quando filtro != ‘’, especifica qual campo adicional da tabela deve ser obtido</p></li>
+<li><p><strong>filtro</strong> – usado na cláusula where</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Dados, na forma de geopandas</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>geopandas</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apiModulo.api_consulta.ApiConsulta.obterIndicador">
+<span class="sig-name descname"><span class="pre">obterIndicador</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tabela</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">definicao</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/apiModulo/api_consulta.html#ApiConsulta.obterIndicador"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apiModulo.api_consulta.ApiConsulta.obterIndicador" title="Permalink to this definition"></a></dt>
+<dd><p>Obtém dados de um Indicador</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index</strong> – ID do indicador na base</p></li>
+<li><p><strong>tabela</strong> – Nome da tabela com dados no banco (presente no Indicador)</p></li>
+<li><p><strong>definicao</strong> – Nome da coluna com dados no banco (presente no Indicador)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Dados</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pandas/geopandas</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apiModulo.api_consulta.ApiConsulta.obterMetadados">
+<span class="sig-name descname"><span class="pre">obterMetadados</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tema</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indexes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/apiModulo/api_consulta.html#ApiConsulta.obterMetadados"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apiModulo.api_consulta.ApiConsulta.obterMetadados" title="Permalink to this definition"></a></dt>
+<dd><p>Obtem as descrições dos indicadores, contendo definição e camada</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filtro</strong> – filtro de nome</p></li>
+<li><p><strong>indexes</strong> – lista de ids de Indicadores no formato de string, Ex. [1, 2, 3, 4]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Dicionário com o metadados da base</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apiModulo.api_consulta.ApiConsulta.obterTabela">
+<span class="sig-name descname"><span class="pre">obterTabela</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nome_tabela</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/apiModulo/api_consulta.html#ApiConsulta.obterTabela"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apiModulo.api_consulta.ApiConsulta.obterTabela" title="Permalink to this definition"></a></dt>
+<dd><p>Obtém todos os dados de uma tabela. 
+Não deve ser usado para camadas.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>nome_tabela</strong> – nome da tabela no banco</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Dados, na forma de pandas</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pandas</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apiModulo.api_consulta.ApiConsulta.obterTema">
+<span class="sig-name descname"><span class="pre">obterTema</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tema</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indexes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/apiModulo/api_consulta.html#ApiConsulta.obterTema"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apiModulo.api_consulta.ApiConsulta.obterTema" title="Permalink to this definition"></a></dt>
+<dd><p>Obtem os dados na forma de um pandas/geopandas. Os Indicadores precisam compartilhar o mesmo suporte espacial</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tema</strong> – utilizado para filtrar os campos de tema, assunto e descrição</p></li>
+<li><p><strong>indexes</strong> – lista de ids de Indicadores no formato de string, Ex. [1, 2, 3, 4]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Dados obtidos no banco. Se houver campo espacial, geopandas. Se não, um pandas. Os metadados são também devolvidos.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>geopandas, dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apiModulo.api_consulta.ApiConsulta.obterTemaSoma">
+<span class="sig-name descname"><span class="pre">obterTemaSoma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tema</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indexes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/apiModulo/api_consulta.html#ApiConsulta.obterTemaSoma"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apiModulo.api_consulta.ApiConsulta.obterTemaSoma" title="Permalink to this definition"></a></dt>
+<dd><p>Obtém os dados dos indicadores e soma seus resultados.
+Garanta que todos os indicadores são do tipo numérico.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tema</strong> – utilizado para filtrar os campos de tema, assunto e descrição</p></li>
+<li><p><strong>indexes</strong> – lista de ids de Indicadores no formato de string, Ex. [1, 2, 3, 4]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Dados obtidos no banco. Se houver campo espacial, geopandas. Se não, um pandas. Os metadados são também devolvidos.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>geopandas, dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../api.html" class="btn btn-neutral float-left" title="PDC-API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="apiModulo.api_insercao.html" class="btn btn-neutral float-right" title="ApiIns" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Geraldo Braz Júnior e Anselmo Cardoso de Paiva.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

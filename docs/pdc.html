@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="pt-br" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Provas de Conceito &mdash; PDC-Vem Pro Centro 0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Como Usar" href="usage.html" />
+    <link rel="prev" title="Sobre" href="sobre.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> PDC-Vem Pro Centro
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Conteúdo:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="sobre.html">Sobre</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Provas de Conceito</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Como Usar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">PDC-API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pdcvis.html">PDC-Visualização</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exemplos.html">Exemplos</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PDC-Vem Pro Centro</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Provas de Conceito</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/pdc.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="provas-de-conceito">
+<h1>Provas de Conceito<a class="headerlink" href="#provas-de-conceito" title="Permalink to this heading"></a></h1>
+<p>A solução está organizada em dois grandes módulos funcionais:</p>
+<ol class="arabic simple">
+<li><p>Gerenciamento de dados: responsável pela funcionalidade de curadoria de dados</p></li>
+<li><p>Visualização e Análise: responsável pela obtenção, processamento e visualização das análises sobre os dados</p></li>
+</ol>
+<p>A solução ainda está organizada de maneira a permitir interações tanto via interface web. Essa prerrogativa permite a fácil customização de serviços e ainda privilegia usuários avançados na análise de dados.</p>
+<p>Os usuários conceituais definidos para as provas de conceito estão organizados em níveis de acesso. A autenticação e autorização deve ser realizada via banco de dados:</p>
+<ol class="arabic simple">
+<li><p>Curador de dados: responsável pela manutenção de informações. Cada secretaria terá seu próprio responsável ou equipe para esta finalidade.</p></li>
+<li><p>Analistas: usuários das diversas secretarias que desejam realizar análises sobre os dados.</p></li>
+</ol>
+<p>As funcionalidades previstas são apresentadas abaixo.
+Em verde as funcionalidades obtidas diretamente. Em Azuis funcionalidades gerais de dados. Em amarelo funcionalidades para mapas.
+Em vermelho funcionalidade para gráficos e em cinza, funcionalidade pública geral:</p>
+<a class="reference internal image-reference" href="_images/casos.png"><img alt="Casos de uso da solução proposta para os PDCs" src="_images/casos.png" style="width: 500px;" /></a>
+<p>Este diagrama apresenta que um Analista também é um usuário da prova de conceito.
+Ele visualizará 2 funções principais no ambiente (em verde):</p>
+<ol class="arabic simple">
+<li><p>Visualizar dados: engloba todos os mecanismos de visualização a serem construídos, começando pela Seleção de Fonte de Dados. Com os dados selecionados, este poderá aplicar filtragens, via Filtragem de Dados. Esses dados podem ser apresentados na forma de texto, gráficos (via Geração de Gráficos) e ainda mapas. Os mapas ainda poderão ser configurados ao Adicionar suporte espacial e Adicionar novas Camadas.</p></li>
+<li><p>Obter Fontes de Dados: consiste em permitir que as fontes de dados sejam recuperadas</p></li>
+</ol>
+<p>O curador de dados ainda possui como responsabilidade a manutenção das informações atualizadas. Este acumula todas as funcionalidades apresentadas anteriormente.
+Isso permite que ele teste as informações inseridas na base. As funcionalidades são:</p>
+<ul class="simple">
+<li><p>Manter Dados: inserir, remover, atualizar fontes de informações na base. As informações de suporte espacial serão inseridas diretamente via API disponibilizada. As informações de métricas ou indicadores serão inseridas via funcionalidade específica.</p></li>
+</ul>
+<p>A partir das funcionalidades descritas, podemos organizar os módulos das PDCs no diagrama de componentes apresentado abaixo.
+Além do módulos propostos, ainda são apresentados o Postgres como centralizador de dados e toda implementação sobre ambiente python.</p>
+<a class="reference internal image-reference" href="_images/componentes.png"><img alt="Componentes da solução apresentada" src="_images/componentes.png" style="width: 500px;" /></a>
+<p>O fluxo básico de funcionamento da solução é representado abaixo. Entende-se que pela sua simplificação, a prova de conceito
+deseja apresentar a viabilidade de construção de soluções sobre análise de dados.
+Ou seja, a construção da PDC foi focada na simplicidade e capacidade de implantação no ambiente real da prefeitura de São Luís,
+cabendo a esta uma série de melhorias que poderiam acontecer de acordo com o requisito necessário.</p>
+<a class="reference internal image-reference" href="_images/func.png"><img alt="Fluxo de funcionamento básico da solução" src="_images/func.png" style="width: 500px;" /></a>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="sobre.html" class="btn btn-neutral float-left" title="Sobre" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="usage.html" class="btn btn-neutral float-right" title="Como Usar" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Geraldo Braz Júnior e Anselmo Cardoso de Paiva.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

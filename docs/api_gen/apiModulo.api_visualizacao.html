@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="pt-br" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ApiVis &mdash; PDC-Vem Pro Centro 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="PDC-Visualização" href="../pdcvis.html" />
+    <link rel="prev" title="ApiIns" href="apiModulo.api_insercao.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> PDC-Vem Pro Centro
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Conteúdo:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../sobre.html">Sobre</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pdc.html">Provas de Conceito</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Como Usar</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">PDC-API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="apiModulo.api_consulta.html">ApiConsulta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiModulo.api_insercao.html">ApiIns</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ApiVis</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#apiModulo.api_visualizacao.ApiVis"><code class="docutils literal notranslate"><span class="pre">ApiVis</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#apiModulo.api_visualizacao.ApiVis.visMapaDados"><code class="docutils literal notranslate"><span class="pre">ApiVis.visMapaDados()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#apiModulo.api_visualizacao.ApiVis.visMapaGJson"><code class="docutils literal notranslate"><span class="pre">ApiVis.visMapaGJson()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#apiModulo.api_visualizacao.ApiVis.visMapaIndicador"><code class="docutils literal notranslate"><span class="pre">ApiVis.visMapaIndicador()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#apiModulo.api_visualizacao.ApiVis.visMapaSemIndicador"><code class="docutils literal notranslate"><span class="pre">ApiVis.visMapaSemIndicador()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#apiModulo.api_visualizacao.ApiVis.visMultiMapa"><code class="docutils literal notranslate"><span class="pre">ApiVis.visMultiMapa()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pdcvis.html">PDC-Visualização</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exemplos.html">Exemplos</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PDC-Vem Pro Centro</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../api.html">PDC-API</a> &raquo;</li>
+      <li>ApiVis</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api_gen/apiModulo.api_visualizacao.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="apivis">
+<h1>ApiVis<a class="headerlink" href="#apivis" title="Permalink to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="apiModulo.api_visualizacao.ApiVis">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">apiModulo.api_visualizacao.</span></span><span class="sig-name descname"><span class="pre">ApiVis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">host</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/apiModulo/api_visualizacao.html#ApiVis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apiModulo.api_visualizacao.ApiVis" title="Permalink to this definition"></a></dt>
+<dd><p>Classe com métodos auxiliares para visualização no Jupyter</p>
+<p class="rubric">Membros</p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#apiModulo.api_visualizacao.ApiVis.visMapaIndicador" title="apiModulo.api_visualizacao.ApiVis.visMapaIndicador"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ApiVis.visMapaIndicador</span></code></a>(indicador[, height, ...])</p></td>
+<td><p>Constroi visualização em mapa de um indicador específico Obrigatório que o indicador tenha suporte espacial</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#apiModulo.api_visualizacao.ApiVis.visMapaGJson" title="apiModulo.api_visualizacao.ApiVis.visMapaGJson"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ApiVis.visMapaGJson</span></code></a>(gdf, variavel, descricao)</p></td>
+<td><p>Constroi visualização em mapa de um valor específico presente em um geopandas</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="apiModulo.api_visualizacao.ApiVis.visMapaDados">
+<span class="sig-name descname"><span class="pre">visMapaDados</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadados</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">600</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">MAPA_ZOOM</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">14.5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/apiModulo/api_visualizacao.html#ApiVis.visMapaDados"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apiModulo.api_visualizacao.ApiVis.visMapaDados" title="Permalink to this definition"></a></dt>
+<dd><p>Constroi visualização em mapa de um indicador específico
+Obrigatório que o indicador tenha suporte espacial</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> – GeoDataframe carregado com os dados</p></li>
+<li><p><strong>meta</strong> – metadados das variáveis presentes no geodataframe</p></li>
+<li><p><strong>height</strong> – Altura de cada mapa. Por padrão 1200</p></li>
+<li><p><strong>width</strong> – Largura de cada mapa. Por padrão 600</p></li>
+<li><p><strong>MAPA_ZOOM</strong> – Zoom inicial do mapa. Por padrão 14.5</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apiModulo.api_visualizacao.ApiVis.visMapaGJson">
+<span class="sig-name descname"><span class="pre">visMapaGJson</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gdf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variavel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">descricao</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">600</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">MAPA_ZOOM</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">14.5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/apiModulo/api_visualizacao.html#ApiVis.visMapaGJson"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apiModulo.api_visualizacao.ApiVis.visMapaGJson" title="Permalink to this definition"></a></dt>
+<dd><p>Constroi visualização em mapa de um valor específico presente em um geopandas</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gdf</strong> – geopandas com os dados</p></li>
+<li><p><strong>variavel</strong> – coluna do geopandas a ser visualizado</p></li>
+<li><p><strong>descricao</strong> – breve descrição dos dados, a servir como legenda</p></li>
+<li><p><strong>height</strong> – Altura de cada mapa. Por padrão 1200</p></li>
+<li><p><strong>width</strong> – Largura de cada mapa. Por padrão 600</p></li>
+<li><p><strong>MAPA_ZOOM</strong> – Zoom inicial do mapa. Por padrão 14.5</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apiModulo.api_visualizacao.ApiVis.visMapaIndicador">
+<span class="sig-name descname"><span class="pre">visMapaIndicador</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indicador</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">600</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">MAPA_ZOOM</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">14.5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/apiModulo/api_visualizacao.html#ApiVis.visMapaIndicador"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apiModulo.api_visualizacao.ApiVis.visMapaIndicador" title="Permalink to this definition"></a></dt>
+<dd><p>Constroi visualização em mapa de um indicador específico
+Obrigatório que o indicador tenha suporte espacial</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>indicador</strong> – id do indicador no banco. Precisa consultar usando o método lstIndicador - lista separada por vírugula</p></li>
+<li><p><strong>height</strong> – Altura de cada mapa. Por padrão 1200</p></li>
+<li><p><strong>width</strong> – Largura de cada mapa. Por padrão 600</p></li>
+<li><p><strong>MAPA_ZOOM</strong> – Zoom inicial do mapa. Por padrão 14.5</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apiModulo.api_visualizacao.ApiVis.visMapaSemIndicador">
+<span class="sig-name descname"><span class="pre">visMapaSemIndicador</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dados</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coluna_geom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/apiModulo/api_visualizacao.html#ApiVis.visMapaSemIndicador"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apiModulo.api_visualizacao.ApiVis.visMapaSemIndicador" title="Permalink to this definition"></a></dt>
+<dd><p>”
+Constroi visualização em mapa sem nenhum indicador</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apiModulo.api_visualizacao.ApiVis.visMultiMapa">
+<span class="sig-name descname"><span class="pre">visMultiMapa</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tipo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dado</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variavel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alias</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">600</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">MAPA_ZOOM</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">14.5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/apiModulo/api_visualizacao.html#ApiVis.visMultiMapa"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apiModulo.api_visualizacao.ApiVis.visMultiMapa" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="apiModulo.api_insercao.html" class="btn btn-neutral float-left" title="ApiIns" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../pdcvis.html" class="btn btn-neutral float-right" title="PDC-Visualização" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Geraldo Braz Júnior e Anselmo Cardoso de Paiva.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
