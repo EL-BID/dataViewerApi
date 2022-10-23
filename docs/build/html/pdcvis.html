@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="pt-br" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PDC-Visualização &mdash; PDC-Vem Pro Centro 0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Exemplos" href="exemplos.html" />
+    <link rel="prev" title="ApiVis" href="api_gen/apiModulo.api_visualizacao.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> PDC-Vem Pro Centro
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Conteúdo:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="sobre.html">Sobre</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pdc.html">Provas de Conceito</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Como Usar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">PDC-API</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">PDC-Visualização</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#definicao-do-config-yaml">Definição do <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exemplo-do-arquivo-config-yaml">Exemplo do arquivo <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-app">Implementação</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#app.addGrafico"><code class="docutils literal notranslate"><span class="pre">addGrafico()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.addMap"><code class="docutils literal notranslate"><span class="pre">addMap()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.addMapHeat"><code class="docutils literal notranslate"><span class="pre">addMapHeat()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.addMapMarcador"><code class="docutils literal notranslate"><span class="pre">addMapMarcador()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.addMapVoronoi"><code class="docutils literal notranslate"><span class="pre">addMapVoronoi()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.loadData"><code class="docutils literal notranslate"><span class="pre">loadData()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="exemplos.html">Exemplos</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PDC-Vem Pro Centro</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>PDC-Visualização</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/pdcvis.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="pdc-visualizacao">
+<h1>PDC-Visualização<a class="headerlink" href="#pdc-visualizacao" title="Permalink to this heading"></a></h1>
+<p>Esta seção apresenta as funcionalidades construídas para o módulo de Visualização
+construída nesse PDC. Esse módulo faz uso da API para a construção de visualizações de mapa e gráficos
+via Streamlit.</p>
+<section id="definicao-do-config-yaml">
+<h2>Definição do <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code><a class="headerlink" href="#definicao-do-config-yaml" title="Permalink to this heading"></a></h2>
+<p>Para o funcionamento do módulo, é necessário configura o arquivo <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code>.
+Esse arquivo é organizado em blocos explicados a seguir:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>O arquivo <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> se encontra na raiz do projeto</p>
+</div>
+<ul class="simple">
+<li><p>Bloco base, <code class="docutils literal notranslate"><span class="pre">app</span></code> deve sempre estar no início do arquivo.</p></li>
+<li><dl class="simple">
+<dt>Bloco <code class="docutils literal notranslate"><span class="pre">area_shape_basico</span></code>: representa camadas do mapa que poderão ser selecionados para apresentação</dt><dd><ul>
+<li><p>info: nome indicativo para a camada</p></li>
+<li><p>tabela: origem dos dados na base de dados</p></li>
+<li><p>tipo: tipo de geometria dos dados</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Exemplo:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">area_shape_basico</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">info</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Limites</span><span class="nv"> </span><span class="s">São</span><span class="nv"> </span><span class="s">Luís&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">tabela</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">limites_sao_luis</span><span class="w"></span>
+<span class="w">      </span><span class="nt">tipo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">poligono</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Bloco <code class="docutils literal notranslate"><span class="pre">camada_padrao</span></code>: representa informações a serem adicionadas como filtros nos mapas</dt><dd><ul>
+<li><p>tipo: tipo de geometria dos dados</p></li>
+<li><p>info: nome indicativo para a camada</p></li>
+<li><p>tabela: origem dos dados na base de dados</p></li>
+<li><p>campos: lista de campos separada por <code class="docutils literal notranslate"><span class="pre">#</span></code> que serão consumidos da tabela</p></li>
+<li><p>descricao: nome formatado dos campos informados, separados por <code class="docutils literal notranslate"><span class="pre">#</span></code></p></li>
+<li><p>popup: campos a serem inseridos no popup, separados por <code class="docutils literal notranslate"><span class="pre">#</span></code></p></li>
+<li><p>desc_popup: nome formatado dos campos informados no popup, separados por <code class="docutils literal notranslate"><span class="pre">#</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">camada_padrao</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">tipo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ponto</span><span class="w"></span>
+<span class="w">      </span><span class="nt">info</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Equipamentos</span><span class="nv"> </span><span class="s">Público&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">tabela</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">equipamento_publico</span><span class="w"></span>
+<span class="w">      </span><span class="nt">campos</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">educacao#saude#seguranca#cultural#assistencia_social</span><span class="w"></span>
+<span class="w">      </span><span class="nt">descricao</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Educação#Saúde#Segurança#Cultural#Assistência</span><span class="nv"> </span><span class="s">Social&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">popup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tipo#name</span><span class="w"></span>
+<span class="w">      </span><span class="nt">desc_popup</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Tipo#Nome&#39;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Os conteúdos (ou páginas) estão organizados em <code class="docutils literal notranslate"><span class="pre">topico</span></code>. Cada um pode possuir <code class="docutils literal notranslate"><span class="pre">mapa</span></code> e <code class="docutils literal notranslate"><span class="pre">grafico</span></code>
+de acordo com a necessidade de visualização.</p>
+<p>Um tópico é definido por um <code class="docutils literal notranslate"><span class="pre">título</span></code> e uma <code class="docutils literal notranslate"><span class="pre">descrição</span></code>. O conteúdo dentro é feito pelas
+declarações de mapas e gráficos.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">topico</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">titulo</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Restauro</span><span class="nv"> </span><span class="s">para</span><span class="nv"> </span><span class="s">Habitação&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">descricao</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="w"></span>
+
+<span class="w">      </span><span class="nt">mapa1</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">grafico1</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">mapa2</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">grafico2</span><span class="p">:</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Você pode inserir quantos mapas forem necessários, mas precisam ser numerados
+em seguência: 1, 2, 3</p>
+</div>
+<dl class="simple">
+<dt>Um mapa é definido por um título, uma descrição, e:</dt><dd><ul class="simple">
+<li><p>tabela: tabela com os dados</p></li>
+<li><p>camada: referência espacial na base</p></li>
+<li><p>variavel: colunas da tabela, separadas por <code class="docutils literal notranslate"><span class="pre">#</span></code></p></li>
+<li><p>alias: nome formatado das colunas, separado por <code class="docutils literal notranslate"><span class="pre">#</span></code></p></li>
+<li><p>camada_extra: referência a uma camada padrão declarada anteriormente</p></li>
+<li><p>camada_interna: referência a uma camada padrão declarada anteriomente</p></li>
+<li><p>camada_base: referência a uma camada padrão declarada anteriomente</p></li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">mapa1</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">titulo</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;**Distribuição</span><span class="nv"> </span><span class="s">de</span><span class="nv"> </span><span class="s">Mulheres</span><span class="nv"> </span><span class="s">por</span><span class="nv"> </span><span class="s">Setor</span><span class="nv"> </span><span class="s">censitario**&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">descricao</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">tabela</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pdc_bid_ibge</span><span class="w"></span>
+<span class="w">    </span><span class="nt">camada</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">setor_censitario</span><span class="w"></span>
+<span class="w">    </span><span class="nt">variavel</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;mulheres_14_anos_ou_mais#mulheres_resp_pelo_dom&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Mulheres</span><span class="nv"> </span><span class="s">(14</span><span class="nv"> </span><span class="s">anos</span><span class="nv"> </span><span class="s">ou</span><span class="nv"> </span><span class="s">mais):#Mulheres</span><span class="nv"> </span><span class="s">responsáveis</span><span class="nv"> </span><span class="s">pelo</span><span class="nv"> </span><span class="s">domicílio&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">camada_extra</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;lotes_por_ponto&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">camada_interna</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tombamento</span><span class="w"></span>
+<span class="w">    </span><span class="nt">camada_base</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anel_viario</span><span class="w"></span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt>Um mapa é definido por um título, uma descrição, e:</dt><dd><ul class="simple">
+<li><p>tabela: tabela com os dados</p></li>
+<li><p>x: lista de colunas utilizadas das tabelas</p></li>
+<li><p>x_alias: nomes formatados das colunas</p></li>
+<li><p>y: referencial do valor apresentado no eixo y</p></li>
+<li><p>tipo: barra_vertical - barra_horizontal - pizza - scatter - linha</p></li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">grafico1</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">titulo</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;**Distribuição</span><span class="nv"> </span><span class="s">da</span><span class="nv"> </span><span class="s">população**&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">descricao</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">tabela</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pdc_bid_ibge</span><span class="w"></span>
+<span class="w">    </span><span class="nt">x</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mulheres_14_anos_ou_mais</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mulher_responsavel</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">idosos_65_anos_ou_mais</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">crianca_13_ou_menos</span><span class="w"></span>
+<span class="w">    </span><span class="nt">x_alias</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Mulheres de 14 anos ou mais</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Mulher Responsável</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Idosos de 65 anos ou mais</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Crianças de 13 anos ou menos</span><span class="w"></span>
+<span class="w">    </span><span class="nt">y</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Quantidade</span><span class="w"></span>
+<span class="w">    </span><span class="nt">tipo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">barra_vertical</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="exemplo-do-arquivo-config-yaml">
+<h2>Exemplo do arquivo <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code><a class="headerlink" href="#exemplo-do-arquivo-config-yaml" title="Permalink to this heading"></a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">app</span><span class="p">:</span><span class="w"></span>
+<span class="w"> </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">area_shape_basico</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">info</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Limites</span><span class="nv"> </span><span class="s">São</span><span class="nv"> </span><span class="s">Luís&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">tabela</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">limites_sao_luis</span><span class="w"></span>
+<span class="w">      </span><span class="nt">tipo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">poligono</span><span class="w"></span>
+<span class="w"> </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">area_shape_basico</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">info</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Anél</span><span class="nv"> </span><span class="s">Viário&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">tabela</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anel_viario</span><span class="w"></span>
+<span class="w">      </span><span class="nt">tipo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">poligono</span><span class="w"></span>
+<span class="w"> </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">camada_padrao</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">tipo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ponto</span><span class="w"></span>
+<span class="w">      </span><span class="nt">info</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Informações</span><span class="nv"> </span><span class="s">de</span><span class="nv"> </span><span class="s">lotes&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">tabela</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lotes_por_ponto</span><span class="w"></span>
+<span class="w">      </span><span class="nt">campos</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">finais_prior#finais_divida#finais_estado_de_</span><span class="w"></span>
+<span class="w">      </span><span class="nt">descricao</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Prioridade#Divida#Estado</span><span class="nv"> </span><span class="s">de</span><span class="nv"> </span><span class="s">Conservação&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">popup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">finais_de_uso#finais_prior#finais_divida#finais_estado_de_</span><span class="w"></span>
+<span class="w">      </span><span class="nt">desc_popup</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Uso#Prioridade#Divida#Estado</span><span class="nv"> </span><span class="s">de</span><span class="nv"> </span><span class="s">Conservação&#39;</span><span class="w"></span>
+<span class="w"> </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">camada_padrao</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">tipo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ponto</span><span class="w"></span>
+<span class="w">      </span><span class="nt">info</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Equipamentos</span><span class="nv"> </span><span class="s">Público&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">tabela</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">equipamento_publico</span><span class="w"></span>
+<span class="w">      </span><span class="nt">campos</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">educacao#saude#seguranca#cultural#assistencia_social</span><span class="w"></span>
+<span class="w">      </span><span class="nt">descricao</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Educação#Saúde#Segurança#Cultural#Assistência</span><span class="nv"> </span><span class="s">Social&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">popup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tipo#name</span><span class="w"></span>
+<span class="w">      </span><span class="nt">desc_popup</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Tipo#Nome&#39;</span><span class="w"></span>
+<span class="w"> </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">camada_padrao</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">tipo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">poligono</span><span class="w"></span>
+<span class="w">      </span><span class="nt">info</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Tombamento&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">tabela</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tombamento</span><span class="w"></span>
+<span class="w">      </span><span class="nt">campos</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">name</span><span class="w"></span>
+<span class="w">      </span><span class="nt">descricao</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Nome&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">popup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">name</span><span class="w"></span>
+<span class="w">      </span><span class="nt">desc_popup</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Nome&#39;</span><span class="w"></span>
+<span class="w"> </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">topico</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">titulo</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Restauro</span><span class="nv"> </span><span class="s">para</span><span class="nv"> </span><span class="s">Habitação&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">descricao</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">mapa1</span><span class="p">:</span><span class="w"></span>
+<span class="w">           </span><span class="nt">titulo</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;**Distribuição</span><span class="nv"> </span><span class="s">de</span><span class="nv"> </span><span class="s">Mulheres</span><span class="nv"> </span><span class="s">por</span><span class="nv"> </span><span class="s">Setor</span><span class="nv"> </span><span class="s">censitario**&#39;</span><span class="w"></span>
+<span class="w">           </span><span class="nt">tabela</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pdc_bid_ibge</span><span class="w"></span>
+<span class="w">           </span><span class="nt">camada</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">setor_censitario</span><span class="w"></span>
+<span class="w">           </span><span class="nt">variavel</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;mulheres_14_anos_ou_mais#mulheres_resp_pelo_dom&#39;</span><span class="w"></span>
+<span class="w">           </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Mulheres</span><span class="nv"> </span><span class="s">(14</span><span class="nv"> </span><span class="s">anos</span><span class="nv"> </span><span class="s">ou</span><span class="nv"> </span><span class="s">mais):#Mulheres</span><span class="nv"> </span><span class="s">responsáveis</span><span class="nv"> </span><span class="s">pelo</span><span class="nv"> </span><span class="s">domicílio&#39;</span><span class="w"></span>
+<span class="w">           </span><span class="nt">descricao</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="w"></span>
+<span class="w">           </span><span class="nt">camada_extra</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;lotes_por_ponto&#39;</span><span class="w"></span>
+<span class="w">           </span><span class="nt">camada_interna</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tombamento</span><span class="w"></span>
+<span class="w">           </span><span class="nt">camada_base</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anel_viario</span><span class="w"></span>
+<span class="w">      </span><span class="nt">grafico1</span><span class="p">:</span><span class="w"></span>
+<span class="w">           </span><span class="nt">titulo</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;**Distribuição</span><span class="nv"> </span><span class="s">da</span><span class="nv"> </span><span class="s">população**&#39;</span><span class="w"></span>
+<span class="w">           </span><span class="nt">tabela</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pdc_bid_ibge</span><span class="w"></span>
+<span class="w">           </span><span class="nt">x</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mulheres_14_anos_ou_mais</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mulher_responsavel</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">idosos_65_anos_ou_mais</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">crianca_13_ou_menos</span><span class="w"></span>
+<span class="w">           </span><span class="nt">x_alias</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Mulheres de 14 anos ou mais</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Mulher Responsável</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Idosos de 65 anos ou mais</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Crianças de 13 anos ou menos</span><span class="w"></span>
+<span class="w">           </span><span class="nt">y</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Quantidade</span><span class="w"></span>
+<span class="w">           </span><span class="nt">tipo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">barra_vertical</span><span class="w"></span>
+<span class="w">           </span><span class="nt">descricao</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">mapa2</span><span class="p">:</span><span class="w"></span>
+<span class="w">           </span><span class="nt">titulo</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;**Lotes**&#39;</span><span class="w"></span>
+<span class="w">           </span><span class="nt">tabela</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pdc_bid_lotes</span><span class="w"></span>
+<span class="w">           </span><span class="nt">camada</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lotes</span><span class="w"></span>
+<span class="w">           </span><span class="nt">variavel</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;tipologia_finais#conservacao_finais#uso_finais#prioridade_finais#divida&#39;</span><span class="w"></span>
+<span class="w">           </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Tipologia#Estado</span><span class="nv"> </span><span class="s">de</span><span class="nv"> </span><span class="s">Conservação#Uso#Prioridade#Divida&#39;</span><span class="w"></span>
+<span class="w">           </span><span class="nt">descricao</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="w"></span>
+<span class="w">           </span><span class="nt">camada_extra</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;equipamento_publico&#39;</span><span class="w"></span>
+<span class="w">           </span><span class="nt">camada_interna</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="w"></span>
+<span class="w">           </span><span class="nt">camada_base</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;anel_viario&#39;</span><span class="w"></span>
+<span class="w"> </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">topico</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">titulo</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Habitações</span><span class="nv"> </span><span class="s">Precárias&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">descricao</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">mapa1</span><span class="p">:</span><span class="w"></span>
+<span class="w">           </span><span class="nt">titulo</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;**Distribruição</span><span class="nv"> </span><span class="s">de</span><span class="nv"> </span><span class="s">banheiros</span><span class="nv"> </span><span class="s">nas</span><span class="nv"> </span><span class="s">habitações**&#39;</span><span class="w"></span>
+<span class="w">           </span><span class="nt">tabela</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pdc_bid_ibge</span><span class="w"></span>
+<span class="w">           </span><span class="nt">camada</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">setor_censitario</span><span class="w"></span>
+<span class="w">           </span><span class="nt">variavel</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;dom_sem_banheiro_nem_sanitario#dom_sem_banheiro#dom_com_1_banheiro#dom_com_2_banheiro#dom_com_3_banheiro&#39;</span><span class="w"></span>
+<span class="w">           </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Dom.</span><span class="nv"> </span><span class="s">sem</span><span class="nv"> </span><span class="s">banheiro</span><span class="nv"> </span><span class="s">nem</span><span class="nv"> </span><span class="s">sanitário#Dom.</span><span class="nv"> </span><span class="s">sem</span><span class="nv"> </span><span class="s">banheiro#Dom.</span><span class="nv"> </span><span class="s">com</span><span class="nv"> </span><span class="s">até</span><span class="nv"> </span><span class="s">1</span><span class="nv"> </span><span class="s">banheiro#Dom.</span><span class="nv"> </span><span class="s">com</span><span class="nv"> </span><span class="s">até</span><span class="nv"> </span><span class="s">2</span><span class="nv"> </span><span class="s">banheiros#Dom.</span><span class="nv"> </span><span class="s">com</span><span class="nv"> </span><span class="s">até</span><span class="nv"> </span><span class="s">3</span><span class="nv"> </span><span class="s">banheiros&#39;</span><span class="w"></span>
+<span class="w">           </span><span class="nt">descricao</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="w"></span>
+<span class="w">           </span><span class="nt">camada_extra</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;equipamento_publico&#39;</span><span class="w"></span>
+<span class="w">           </span><span class="nt">camada_interna</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="w"></span>
+<span class="w">           </span><span class="nt">camada_base</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;anel_viario&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">grafico1</span><span class="p">:</span><span class="w"></span>
+<span class="w">           </span><span class="nt">titulo</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;**Distribuição</span><span class="nv"> </span><span class="s">da</span><span class="nv"> </span><span class="s">população**&#39;</span><span class="w"></span>
+<span class="w">           </span><span class="nt">tabela</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pdc_bid_ibge</span><span class="w"></span>
+<span class="w">           </span><span class="nt">x</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mulheres_14_anos_ou_mais</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mulher_responsavel</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">idosos_65_anos_ou_mais</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">crianca_13_ou_menos</span><span class="w"></span>
+<span class="w">           </span><span class="nt">x_alias</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Mulheres de 14 anos ou mais</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Mulher Responsável</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Idosos de 65 anos ou mais</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Crianças de 13 anos ou menos</span><span class="w"></span>
+<span class="w">           </span><span class="nt">y</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Quantidade</span><span class="w"></span>
+<span class="w">           </span><span class="nt">tipo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">barra_vertical</span><span class="w"></span>
+<span class="w">           </span><span class="nt">descricao</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">grafico2</span><span class="p">:</span><span class="w"></span>
+<span class="w">           </span><span class="nt">titulo</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;**Distribuição</span><span class="nv"> </span><span class="s">de</span><span class="nv"> </span><span class="s">Esgoto**&#39;</span><span class="w"></span>
+<span class="w">           </span><span class="nt">tabela</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pdc_bid_ibge</span><span class="w"></span>
+<span class="w">           </span><span class="nt">x</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dom_banh_excl_rede_geral</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dom_banh_excl_fossa_septica</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dom_banh_excl_fossa_rud</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dom_banh_excl_vala</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dom_banh_excl_rio_lago_mar</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dom_banh_excl_outro</span><span class="w"></span>
+<span class="w">           </span><span class="nt">x_alias</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Rede Geral</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Fossa Séptica</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Fossa Rudimentar</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Vala</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Rio, Lago ou Mar</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Outro</span><span class="w"></span>
+<span class="w">           </span><span class="nt">y</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Quantidade</span><span class="w"></span>
+<span class="w">           </span><span class="nt">tipo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pizza</span><span class="w"></span>
+<span class="w">           </span><span class="nt">descricao</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">grafico3</span><span class="p">:</span><span class="w"></span>
+<span class="w">           </span><span class="nt">titulo</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;**Distribuição</span><span class="nv"> </span><span class="s">de</span><span class="nv"> </span><span class="s">banheiros**&#39;</span><span class="w"></span>
+<span class="w">           </span><span class="nt">tabela</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pdc_bid_ibge</span><span class="w"></span>
+<span class="w">           </span><span class="nt">x</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dom_sem_banheiro_nem_sanitario</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dom_com_1_banheiro</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dom_com_2_banheiro</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dom_com_3_banheiro</span><span class="w"></span>
+<span class="w">           </span><span class="nt">x_alias</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dom. sem banheiro nem sanitário</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dom. com 1 banheiro</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dom. com 2 banheiros</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dom. com 3 banheiros</span><span class="w"></span>
+<span class="w">           </span><span class="nt">y</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Quantidade</span><span class="w"></span>
+<span class="w">           </span><span class="nt">tipo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">barra_vertical</span><span class="w"></span>
+<span class="w">           </span><span class="nt">descricao</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">grafico4</span><span class="p">:</span><span class="w"></span>
+<span class="w">           </span><span class="nt">titulo</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;**Distribuição</span><span class="nv"> </span><span class="s">de</span><span class="nv"> </span><span class="s">Água**&#39;</span><span class="w"></span>
+<span class="w">           </span><span class="nt">tabela</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pdc_bid_ibge</span><span class="w"></span>
+<span class="w">           </span><span class="nt">x</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dom_abastecimento_agua_rede_geral</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dom_abastecimento_agua_poco_nascente</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dom_abastecimento_agua_chuva_cisterna</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dom_abastecimento_agua_outra</span><span class="w"></span>
+<span class="w">           </span><span class="nt">x_alias</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Rede Geral</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Poço ou Nascente</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Chuva ou Cisterna</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Outro</span><span class="w"></span>
+<span class="w">           </span><span class="nt">y</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Quantidade</span><span class="w"></span>
+<span class="w">           </span><span class="nt">tipo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">barra_horizontal</span><span class="w"></span>
+<span class="w">           </span><span class="nt">descricao</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">grafico5</span><span class="p">:</span><span class="w"></span>
+<span class="w">           </span><span class="nt">titulo</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;**Distribuição</span><span class="nv"> </span><span class="s">de</span><span class="nv"> </span><span class="s">Lixo**&#39;</span><span class="w"></span>
+<span class="w">           </span><span class="nt">tabela</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pdc_bid_ibge</span><span class="w"></span>
+<span class="w">           </span><span class="nt">x</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dom_part_lixo_coletado_servico</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dom_part_lixo_coletado_cacamba_servico</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dom_part_lixo_queimado_propriedade</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dom_part_lixo_enterrado_propriedade</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dom_part_lixo_terreno_baldio</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dom_part_lixo_rio_lago_mar</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dom_part_lixo_outro</span><span class="w"></span>
+<span class="w">           </span><span class="nt">x_alias</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Serviço de Coleta</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Caçamba</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Lixo Queimado</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Enterrado na Propriedade</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Terreno Baldio</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Rio, Lago ou Mar</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Outro</span><span class="w"></span>
+<span class="w">           </span><span class="nt">y</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Quantidade</span><span class="w"></span>
+<span class="w">           </span><span class="nt">tipo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pizza</span><span class="w"></span>
+<span class="w">           </span><span class="nt">descricao</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="w"></span>
+<span class="w"> </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">topico</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">titulo</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Equipamentos</span><span class="nv"> </span><span class="s">Públicos&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">descricao</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="w"></span>
+<span class="w"> </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">topico</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">titulo</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Imóveis</span><span class="nv"> </span><span class="s">Ociosos&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">descricao</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="w"></span>
+<span class="w"> </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">topico</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">titulo</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Regularização</span><span class="nv"> </span><span class="s">Fundiária&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">descricao</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="module-app">
+<span id="implementacao"></span><h2>Implementação<a class="headerlink" href="#module-app" title="Permalink to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#app.loadData" title="app.loadData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">app.loadData</span></code></a>(conf)</p></td>
+<td><p>Load de todos os dados informados no YAML</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#app.addMapMarcador" title="app.addMapMarcador"><code class="xref py py-obj docutils literal notranslate"><span class="pre">app.addMapMarcador</span></code></a>(m, camada, camada_sel)</p></td>
+<td><p>Adiciona marcados (pontos) num mapa</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#app.addMapHeat" title="app.addMapHeat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">app.addMapHeat</span></code></a>(m, camada, camada_sel)</p></td>
+<td><p>A partir dos pontos selecionados, cria um mapa de calor</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#app.addMapVoronoi" title="app.addMapVoronoi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">app.addMapVoronoi</span></code></a>(m, camada, area_base, ...)</p></td>
+<td><p>A partir dos pontos selecionados, cria um mapa de Voronoi</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#app.addMap" title="app.addMap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">app.addMap</span></code></a>(geo, variavel, alias[, ...])</p></td>
+<td><p>Função básica para inclusão de mapas</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#app.addGrafico" title="app.addGrafico"><code class="xref py py-obj docutils literal notranslate"><span class="pre">app.addGrafico</span></code></a>(data, variaveis, ...[, agg])</p></td>
+<td><p>Gera gráficos de acordo com a configuração informada no YAML</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt class="sig sig-object py" id="app.addGrafico">
+<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">addGrafico</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variaveis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variaveis_alias</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alias</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tipo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sum'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/app.html#addGrafico"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.addGrafico" title="Permalink to this definition"></a></dt>
+<dd><p>Gera gráficos de acordo com a configuração informada no YAML</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – dados para construção do gráfico</p></li>
+<li><p><strong>variaveis</strong> – colunas a serem coletadas de data</p></li>
+<li><p><strong>variaveis_alias</strong> – nome formatado das variáveis</p></li>
+<li><p><strong>alias</strong> – filtro selecionado na interface gráfica</p></li>
+<li><p><strong>tipo</strong> – tipo do mapa, configurado no YAML</p></li>
+<li><p><strong>agg</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.addMap">
+<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">addMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variavel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alias</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camadas_extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camada_interna</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camada_base</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ponto_tipo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Marcador'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/app.html#addMap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.addMap" title="Permalink to this definition"></a></dt>
+<dd><p>Função básica para inclusão de mapas</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>geo</strong> – camada geográfica e dados</p></li>
+<li><p><strong>variavel</strong> – informação que deve ser exibida no mapa, numa escala de cor</p></li>
+<li><p><strong>alias</strong> – nome formatado da variável</p></li>
+<li><p><strong>camadas_extra</strong> – informação de camada adicional a ser inserida por seleção</p></li>
+<li><p><strong>camadas_interna</strong> – informação de camada adicional a ser inserida por padrão</p></li>
+<li><p><strong>camadas_base</strong> – limites da área de interesse, usado pelo voronoi</p></li>
+<li><p><strong>ponto_tipo</strong> – Marcador - Calor ou Voronoi</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.addMapHeat">
+<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">addMapHeat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camada</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camada_sel</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/app.html#addMapHeat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.addMapHeat" title="Permalink to this definition"></a></dt>
+<dd><p>A partir dos pontos selecionados, cria um mapa de calor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>camada</strong> – camada previamente informada com os pontos</p></li>
+<li><p><strong>camada_sel</strong> – filtro selecionado na interface gráfica</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.addMapMarcador">
+<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">addMapMarcador</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camada</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camada_sel</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/app.html#addMapMarcador"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.addMapMarcador" title="Permalink to this definition"></a></dt>
+<dd><p>Adiciona marcados (pontos) num mapa</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>camada</strong> – camada previamente informada com os pontos</p></li>
+<li><p><strong>camada_sel</strong> – filtro selecionado na interface gráfica</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.addMapVoronoi">
+<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">addMapVoronoi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camada</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">area_base</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camada_sel</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/app.html#addMapVoronoi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.addMapVoronoi" title="Permalink to this definition"></a></dt>
+<dd><p>A partir dos pontos selecionados, cria um mapa de Voronoi</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>camada</strong> – camada previamente informada com os pontos</p></li>
+<li><p><strong>area_base</strong> – geometria base para filtrar os limites do voronoi</p></li>
+<li><p><strong>camada_sel</strong> – filtro selecionado na interface gráfica</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.loadData">
+<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">loadData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conf</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/app.html#loadData"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.loadData" title="Permalink to this definition"></a></dt>
+<dd><p>Load de todos os dados informados no YAML</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>conf</strong> – dicionário vindo da leitura do YAML</p>
+</dd>
+<dt class="field-even">Return data, georet</dt>
+<dd class="field-even"><p>dados e camadas espaciais</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="api_gen/apiModulo.api_visualizacao.html" class="btn btn-neutral float-left" title="ApiVis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="exemplos.html" class="btn btn-neutral float-right" title="Exemplos" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Geraldo Braz Júnior e Anselmo Cardoso de Paiva.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
