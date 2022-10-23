@@ -1,10 +1,10 @@
-from cProfile import label
-from re import X
+#from cProfile import label
+#from re import X
 import re
-from tkinter import Y
-from turtle import fillcolor
-from types import NoneType
-from attr import field
+#from tkinter import Y
+#from turtle import fillcolor
+#from types import NoneType
+#from attr import field
 import folium
 import streamlit as st
 from streamlit_folium import st_folium
@@ -68,7 +68,7 @@ def loadData(conf):
 
     #obtendo os dados
     for i in range(0, len(tlist)):
-
+        
         df = apiCons.obterTabela(tlist[i])
         df['id'] = df['cod_camada']    
         df['cod_camada'] = df['cod_camada'].apply(lambda x: str(x))
@@ -341,6 +341,7 @@ def sidebar():
 
 
 #configurações gerais
+
 try:
     conf = getConfig()
 
@@ -447,4 +448,4 @@ try:
                                     valores['y'],
                                     valores['tipo'])
 except:
-    print("Config.yaml não encontrado")
+    print('Erro de execução')

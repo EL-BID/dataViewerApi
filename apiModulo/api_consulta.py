@@ -340,6 +340,6 @@ class ApiConsulta:
         # obtem camada
         dataframe = gpd.GeoDataFrame.from_postgis(sql, self.connection, geom_col='geometria')
         dataframe.to_crs(pyproj.CRS.from_epsg(4326), inplace=True)
-        dataframe = dataframe.set_index('cod_camada')
+        #dataframe = dataframe.set_index('cod_camada')
         return dataframe        
 
