@@ -29,6 +29,22 @@ instaladas para o funcionamento da PDC.
    (.ENV_NOME) $ pip install -r requirements.txt
 
 
+Configurando banco de dados: Postgres
+--------------------------------------
+
+Essa solução utiliza o banco de dados Postgres com a extensão Postgis. Após a instalação do mesmo, 
+disponibilizamos um dump inicial da base de dados com dados no IBGE (feito com o PGAdmin). Para restaurar o dump, siga os passo:
+
+ * Crie um database chamado "pdc" com owner "postgres" [se preferir crie com outro usuário, mas este deve ser owner do database]
+ * Adicione a extensão espacial ao database. Abra um psql e digite:
+ 
+ .. code-block:: sql  
+ 
+   create extension postgis;
+ 
+ * Abra o PGAdmin e selecione a opção "restore", selecionando o aruqivo do pdc.dump
+
+
 Configurar Globals.py
 -------------------------
 
