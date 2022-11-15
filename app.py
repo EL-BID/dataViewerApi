@@ -1,10 +1,4 @@
-#from cProfile import label
-#from re import X
 import re
-#from tkinter import Y
-#from turtle import fillcolor
-#from types import NoneType
-#from attr import field
 import folium
 import streamlit as st
 from streamlit_folium import st_folium
@@ -25,7 +19,6 @@ from config import getConfig
 import pyproj
 from geovoronoi import voronoi_regions_from_coords, points_to_region, points_to_coords
 
-
 st.set_page_config(layout="wide")
 try:
     with open("style.css") as f:
@@ -37,6 +30,7 @@ except:
 colors = ["red", "blue", "green", "purple", "orange", "darkred",
 "lightred", "beige", "darkblue", "darkgreen", "cadetblue", "darkpurple", "white", "pink", "lightblue", "lightgreen", "gray", "black", "lightgray"]
 id =1 #id sequencial para componentes visual do streamlit
+
 
 @st.cache(allow_output_mutation=True)
 def loadData(conf):
@@ -340,73 +334,122 @@ def sidebar():
     bid = Image.open('assets/logo_bid.png')
     st.sidebar.image(bid, width=200)
 
+def check_password():
+    """Returns `True` if the user had a correct password."""
 
-#configurações gerais
+    def password_entered():
+        """Checks whether a password entered by the user is correct."""        
+        if (
+            st.session_state["username"] in st.secrets["passwords"]
+            and st.session_state["password"]
+            == st.secrets["passwords"][st.session_state["username"]]
+        ):
+            st.session_state["password_correct"] = True
+            #del st.session_state["password"]  # don't store username + password
+            #del st.session_state["username"]
+        else:
+            st.session_state["password_correct"] = False
 
-#try:
-conf = getConfig()
+    if "password_correct" not in st.session_state:
+        # First run, show inputs for username + password.
+        st.text_input("Usuário", key="username")
+        st.text_input("Senha", type="password", on_change=password_entered, key="password"
+        )
+        return False
+    elif not st.session_state["password_correct"]:
+        # Password not correct, show input + error.
+        st.text_input("Username", key="username")
+        st.text_input("Password", type="password", on_change=password_entered, key="password"
+        )
+        st.error("😕 User not known or password incorrect")
+        return False
+    else:
+        # Password correct.
+        return True
 
-sidebar()
-
-#tela principal
-#obtem todos os tópicos informados
-
-topicos = []
-for item in conf['app']:    
-    for key, value in item.items():        
-        if key == 'topico':
-            topicos.append(value['titulo'])
+if True//check_password():
     
-tabs = st.tabs(topicos)
-#carrega todos os dados necessários
-#TODO: provavel que tenhamos que colocar os shapes em um WMS
-data, geo = loadData(conf)
+    #configurações gerais
+    #try:
+    conf = getConfig()
 
-i=-1
-for item in conf['app']:
-    for key, value in item.items():        
-        if key == 'topico':
-            topico = value            
-            i = i+1
-            with tabs[i]:
-                st.title(topico['titulo'])
-                if topico['descricao']== '':           
-                    st.write(lorem.get_sentence())
-                else:
-                    st.write(topico['descricao'])
-                st.subheader(topico['descricao'])
+    sidebar()
 
-                for elemento, valores in topico.items():                    
-                    #codigo para mapa
-                    if elemento.startswith("mapa"):   
-                        #montando combo para variáveis no mapa
-                        lvariaveis = valores['variavel'].split('#')       
-                        lalias = valores['alias'].split('#')
+    #tela principal
+    #obtem todos os tópicos informados
 
-                        if valores['camada_extra'] != '':                            
-                            col1, col2 = st.columns([1, 3])
-                            with col1:  
+    topicos = []
+    for item in conf['app']:    
+        for key, value in item.items():        
+            if key == 'topico':
+                topicos.append(value['titulo'])
+        
+    tabs = st.tabs(topicos)
+    
+    #carrega todos os dados necessários
+    #TODO: provavel que tenhamos que colocar os shapes em um WMS
+    data, geo = loadData(conf)
+
+    i=-1
+    for item in conf['app']:
+        for key, value in item.items():        
+            if key == 'topico':
+                topico = value            
+                i = i+1
+                with tabs[i]:
+                    st.title(topico['titulo'])
+                    if topico['descricao']== '':           
+                        st.write(lorem.get_sentence())
+                    else:
+                        st.write(topico['descricao'])
+                    st.subheader(topico['descricao'])
+
+                    for elemento, valores in topico.items():                    
+                        #codigo para mapa
+                        if elemento.startswith("mapa"):   
+                            #montando combo para variáveis no mapa
+                            lvariaveis = valores['variavel'].split('#')       
+                            lalias = valores['alias'].split('#')
+
+                            if valores['camada_extra'] != '':                            
+                                col1, col2 = st.columns([1, 2])
+                                with col1:  
+                                    
+                                    if topico['descricao']== '':           
+                                        st.write(lorem.get_sentence())
+                                    else:
+                                        st.write(topico['descricao'])
+                    
+                                    var_sel = st.selectbox('Variáveis disponíveis', 
+                                                        options=lalias, 
+                                                        key=id)
+                                    id = id+1    
+                                    camada_sel = st.multiselect(geo[valores['camada_extra']]['info'],
+                                                        options=geo[valores['camada_extra']]['descricao'], 
+                                                        key=id)
+                                    id=id+1
                                 
-                                if topico['descricao']== '':           
-                                    st.write(lorem.get_sentence())
-                                else:
-                                    st.write(topico['descricao'])
-                
+                                    ponto_tipo = st.selectbox('Tipo Mapa Ponto', 
+                                                        options=['Marcador', 'Calor', 'Voronoi'], 
+                                                        key=id)
+                                    id = id+1
+                                    
+                                with col2:  
+                                    index = lalias.index(var_sel) 
+                                    if valores['camada_extra'] != '':
+                                        addMap(geo[valores['camada']]['geo'],                                  
+                                                lvariaveis[index],                                
+                                                lalias[index], 
+                                                geo[valores['camada_extra']] if valores['camada_extra']!='' else None,
+                                                geo[valores['camada_interna']] if valores['camada_interna']!='' else None,                            
+                                                geo[valores['camada_base']] if valores['camada_base']!='' else None,                            
+                                                ponto_tipo) 
+                            else:
                                 var_sel = st.selectbox('Variáveis disponíveis', 
-                                                    options=lalias, 
-                                                    key=id)
-                                id = id+1    
-                                camada_sel = st.multiselect(geo[valores['camada_extra']]['info'],
-                                                    options=geo[valores['camada_extra']]['descricao'], 
-                                                    key=id)
-                                id=id+1
-                            
-                                ponto_tipo = st.selectbox('Tipo Mapa Ponto', 
-                                                    options=['Marcador', 'Calor', 'Voronoi'], 
-                                                    key=id)
+                                                        options=lalias, 
+                                                        key=id)
                                 id = id+1
-                                
-                            with col2:  
+
                                 index = lalias.index(var_sel) 
                                 if valores['camada_extra'] != '':
                                     addMap(geo[valores['camada']]['geo'],                                  
@@ -414,40 +457,25 @@ for item in conf['app']:
                                             lalias[index], 
                                             geo[valores['camada_extra']] if valores['camada_extra']!='' else None,
                                             geo[valores['camada_interna']] if valores['camada_interna']!='' else None,                            
-                                            geo[valores['camada_base']] if valores['camada_base']!='' else None,                            
-                                            ponto_tipo) 
-                        else:
-                            var_sel = st.selectbox('Variáveis disponíveis', 
-                                                    options=lalias, 
-                                                    key=id)
-                            id = id+1
+                                            ponto_tipo)    
 
-                            index = lalias.index(var_sel) 
-                            if valores['camada_extra'] != '':
-                                addMap(geo[valores['camada']]['geo'],                                  
-                                        lvariaveis[index],                                
-                                        lalias[index], 
-                                        geo[valores['camada_extra']] if valores['camada_extra']!='' else None,
-                                        geo[valores['camada_interna']] if valores['camada_interna']!='' else None,                            
-                                        ponto_tipo)    
-
-                    if re.search("^grafico.*$", elemento) != None:
-                        col1, col2 = st.columns([1, 2])
-                        with col1:
-                            st.write(valores['titulo'])                
-                            if valores['descricao']=='':
-                                st.write(lorem.get_paragraph())
-                            else:
-                                st.write(valores['descricao'])
-                        with col2:
-                            df = data[valores['tabela']]['df']
-                            if last_layer_id_clicked != None:
-                                df = df.loc[df['id'] == last_layer_id_clicked]
-                            addGrafico(df, 
-                                valores['x'],
-                                valores['x_alias'],
-                                valores['y'],
-                                valores['tipo'])
-                                    
-#except:
-#    print('Erro de execução')
+                        if re.search("^grafico.*$", elemento) != None:
+                            col1, col2 = st.columns([1, 2])
+                            with col1:
+                                st.write(valores['titulo'])                
+                                if valores['descricao']=='':
+                                    st.write(lorem.get_paragraph())
+                                else:
+                                    st.write(valores['descricao'])
+                            with col2:
+                                df = data[valores['tabela']]['df']
+                                if last_layer_id_clicked != None:
+                                    df = df.loc[df['id'] == last_layer_id_clicked]
+                                addGrafico(df, 
+                                    valores['x'],
+                                    valores['x_alias'],
+                                    valores['y'],
+                                    valores['tipo'])
+                                        
+    #except:
+    #    print('Erro de execução')
