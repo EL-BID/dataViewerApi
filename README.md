@@ -1,18 +1,39 @@
-# Seja bem vindo à prova de conceito - SLZ - BID
 
-A cidade de São Luís, com 1,1 milhão de habitantes, é a capital do estado do Maranhão. Está considerando uma segunda operação urbana com o Banco para migrar São Luís para um modelo de Cidade Inteligente, aproveitando soluções de dados para apoiar o planejamento urbano, projetos especiais e inovação da cidade.
+<h1 align="center">VemProCentro - Data Viewer</h1>
+<p align="center"> Logo e imagem ou gif da interface principal da ferramenta</p>
+<p align="center"><img src="https://www.webdevelopersnotes.com/wp-content/uploads/create-a-simple-home-page.png"/></p>
 
-As consultorias são totalmente interligadas uma vez que a primeira promove a coleta, análise e diagnóstico de dados abertos e restritos e a segunda consultoria deve orientar o processo de diagnóstico que deve incluir mecanismos de curadoria, qualidade, pré-processamento e limpeza de dados, para que estes possam ser adequadamente em provas de conceito a serem construídas como um dos objetivos da segunda consultoria. 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=EL-BID_guia-de-publicacion&metric=alert_status)](https://sonarcloud.io/dashboard?id=EL-BID_guia-de-publicacion)
 
-Como forma de subsidiar o processo de diagnóstico dos dados fornecidos pela prefeitura e coletados em base de dados abertos, esta prova de conceito tem como finalidade apresentar uma solução para auxílio neste processo, especificamente no cenário do Programa Vem pro Centro.
+*Esta ferramenta digital faz parte do catálogo de ferramentas do **Banco Interamericano de Desenvolvimento**. Você pode saber mais sobre a iniciativa do BID em [code.iadb.org](https://code.iadb.org)*
 
-## Programa Vem pro Centro
 
+## Tabela de conteúdos:
+---
+- [Descrição](#Descrição)
+- [Guia do usuário](#Guia-do-usuário)
+- [Guia de instalação](#Guia-de-instalação)
+- [Autor/es](#Autor(es))
+- [Licença](#Licença)
+- [Isenção de responsabilidade - Somente BID](#Isenção-de-responsabilidade)
+
+## Descrição e contexto
+---
+
+A cidade de São Luís, com 1,1 milhão de habitantes, é a capital do estado do Maranhão. Este repositório apresenta a implementação de PDC com foco de migrar São Luís para um modelo de Cidade Inteligente, aproveitando soluções de dados para apoiar o planejamento urbano, projetos especiais e inovação da cidade.
+
+A solução se concentra na construção de bases de dados e na visualização destes com flexibildiade. Como forma de subsidiar o processo de diagnóstico dos dados fornecidos pela prefeitura e coletados em base de dados abertos, esta prova de conceito tem como finalidade apresentar uma solução para auxílio neste processo, especificamente no cenário do Programa Vem pro Centro.
 
 O Programa Vem pro Centro busca, por meio de ações de reabilitação, restauro e construção em imóveis ociosos, produzir unidades habitacionais, equipamentos públicos e pequenos comércios, que garantam o adensamento populacional, a conservação integrada, a sustentabilidade e a inclusão socioeconômica da população e dos usuários da região central de São Luís.
 
 
-## Instalação
+## Guia do usuário
+---
+
+Toda a documentação das implementações podem ser obtidas no link: https://gebraz.github.io/pdcbid/
+
+## Guia de instalação
+---
 
 > Para a instalação do módulo, recomenda-se o uso de Python 3.8 ou superior. Recomenda-se o uso de um gerenciador de envs.
 
@@ -91,3 +112,23 @@ Após a configuração do módulo (veja :ref:`PDC-Visualização`), estando na p
 ```
    (.ENV_NOME) $ streamlit run app.py
 ```
+
+## Autor(es)
+---
+
+Desenvolvido por
+ - Geraldo Braz Junior
+ - Anselmo Cardoso de Paiva
+
+## Licença
+---
+
+Esta ferramenta é resultado da iniciativa Código para o Desenvolvimento, financiada pelo BID, com Licença AM-331-A3.
+
+## Isenção de responsabilidade
+
+O BID não será responsável, em hipótese alguma, por danos ou indenizações, morais ou patrimoniais; direto ou indireto; acessório ou especial; ou por consequência, prevista ou imprevista, que possa surgir:
+
+i. Sob qualquer teoria de responsabilidade, seja em contrato, violação de direitos de propriedade intelectual, negligência, ou sob qualquer outra teoria; 
+
+ii. Como resultado do uso da Ferramenta Digital, incluindo, mas não limitado a, possíveis defeitos na Ferramenta Digital, ou perda ou imprecisão de dados de qualquer tipo. O anterior inclui despesas ou danos associados a falhas de comunicação e/ou mau funcionamento do computador, vinculados ao uso da Ferramenta Digital.
