@@ -20,12 +20,19 @@ import pyproj
 from geovoronoi import voronoi_regions_from_coords, points_to_region, points_to_coords
 
 st.set_page_config(layout="wide")
-try:
-    with open("style.css") as f:
-        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
-except:
-    print("Style não encontrado")
 
+style = """
+    <style>
+        #root > div:nth-child(1) > div > div > div > div > section > div {padding-top: 0rem;}
+        #MainMenu {
+            visibility: hidden;
+        }
+        footer {
+            visibility: hidden;
+        }             
+    </style>
+"""
+ 
 #globals
 colors = ["red", "blue", "green", "purple", "orange", "darkred",
 "lightred", "beige", "darkblue", "darkgreen", "cadetblue", "darkpurple", "white", "pink", "lightblue", "lightgreen", "gray", "black", "lightgray"]
@@ -256,7 +263,7 @@ def addMap(geo, variavel, alias,
     
     folium.LayerControl().add_to(m)
 
-    output = st_folium(m, width = 600, height=500)
+    output = st_folium(m, width = 1000, height=500)
     #st.write(output)
 
     global last_layer_id_clicked
@@ -312,27 +319,24 @@ def addGrafico(data, variaveis, variaveis_alias, alias, tipo, agg='sum'):
 
     st.plotly_chart(fig, use_container_width=True)
 
-def sidebar():
-    #sidebar
+def footer():
+
+    col1, col2, col3 = st.columns([1, 1, 4])
+
     slz = Image.open('assets/logo.png')
-    st.sidebar.image(slz)
-
-    st.sidebar.title("Sobre")
-    st.sidebar.info(
-        """Implementação de PDC para análise e visualização de dados"""
-    )
-
-    st.sidebar.title("Contato")
-    st.sidebar.info(
-        """
-        SEMISPE / NCA
-        - [GitHub](<https://github.com/gebraz/pdcbid>)
-        - [DOCS](<https://gebraz.github.io/pdcbid/>)
-        """
-    )
-
+    with col1:
+        st.image(slz, width=140)
     bid = Image.open('assets/logo_bid.png')
-    st.sidebar.image(bid, width=200)
+    with col2:
+        st.image(bid, width=140)
+    with col3:
+        st.text("Implementação de PDC para análise e visualização de dados")        
+        st.text("Contato: [GitHub](<https://github.com/gebraz/pdcbid>)")        
+        
+def header(content):
+    
+    st.title(f"Data Viewer - PDC - {content}")
+    #st.markdown(f'<img src="assets/logo.png"/><span class="css-10trblm e16nr0p30">Pdc Viewer - {content} </span>', unsafe_allow_html=True)
 
 def check_password():
     """Returns `True` if the user had a correct password."""
@@ -367,13 +371,16 @@ def check_password():
         # Password correct.
         return True
 
-if True//check_password():
-    
+if True: #check_password():
+
+    st.markdown(style,unsafe_allow_html=True)
+
     #configurações gerais
     #try:
     conf = getConfig()
 
-    sidebar()
+    #sidebar()
+    header("""Vem Pro Centro""")
 
     #tela principal
     #obtem todos os tópicos informados
@@ -383,11 +390,12 @@ if True//check_password():
         for key, value in item.items():        
             if key == 'topico':
                 topicos.append(value['titulo'])
-        
+    
+    #monta os temas
     tabs = st.tabs(topicos)
     
+    
     #carrega todos os dados necessários
-    #TODO: provavel que tenhamos que colocar os shapes em um WMS
     data, geo = loadData(conf)
 
     i=-1
@@ -402,24 +410,23 @@ if True//check_password():
                         st.write(lorem.get_sentence())
                     else:
                         st.write(topico['descricao'])
-                    st.subheader(topico['descricao'])
-
+                    
                     for elemento, valores in topico.items():                    
+                        
                         #codigo para mapa
                         if elemento.startswith("mapa"):   
                             #montando combo para variáveis no mapa
                             lvariaveis = valores['variavel'].split('#')       
                             lalias = valores['alias'].split('#')
 
+                            if valores['descricao']== '':           
+                                st.write(lorem.get_sentence())
+                            else:
+                                st.write(valores['descricao'])
+                                        
                             if valores['camada_extra'] != '':                            
-                                col1, col2 = st.columns([1, 2])
-                                with col1:  
-                                    
-                                    if topico['descricao']== '':           
-                                        st.write(lorem.get_sentence())
-                                    else:
-                                        st.write(topico['descricao'])
-                    
+                                col1, col2 = st.columns([1, 4])
+                                with col1:                                      
                                     var_sel = st.selectbox('Variáveis disponíveis', 
                                                         options=lalias, 
                                                         key=id)
@@ -476,6 +483,7 @@ if True//check_password():
                                     valores['x_alias'],
                                     valores['y'],
                                     valores['tipo'])
-                                        
+
+    footer()                                    
     #except:
     #    print('Erro de execução')

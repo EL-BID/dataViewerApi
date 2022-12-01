@@ -33,13 +33,13 @@ app:
           desc_popup: 'Nome'  
      - topico: 
           titulo: 'População na Área de Análise'          
-          descricao: 'Apresentamos a distribuição da população responsável na área de interesse.'          
+          descricao: 'Este tópico apresenta informações da população na área de interesse do Vem Pro Centro. Utilize os controles abaixo para mudar a visualização do mapa para a maneira desejada.'
           mapa1:
                titulo: '**Distribuição de Mulheres por Setor censitario**'
                tabela: pdc_bid_ibge
                camada: setor_censitario                
-               variavel: 'mulheres_14_anos_ou_mais#mulheres_resp_pelo_dom'
-               alias: 'Mulheres (14 anos ou mais):#Mulheres responsáveis pelo domicílio'  
+               variavel: 'mulheres_14_anos_ou_mais#mulheres_resp_pelo_dom#idosos_65_anos_ou_mais#crianca_13_ou_menos'
+               alias: 'Mulheres (14 anos ou mais):#Mulheres responsáveis por Domicílios#Idosos#Crianças'  
                descricao: 'Verificamos que as mulheres são a maioria da população na área de interesse e têm um papel fundamental na responsabilidade dos lares'                       
                camada_extra: 'lotes_por_ponto' 
                camada_interna: tombamento   
