@@ -1,7 +1,6 @@
 
 <h1 align="center">VemProCentro - PDC</h1>
-<p align="center"> Logo e imagem ou gif da interface principal da ferramenta</p>
-<p align="center"><img src="https://www.webdevelopersnotes.com/wp-content/uploads/create-a-simple-home-page.png"/></p>
+<p align="center"><img src="https://github.com/gebraz/dataViewerApi/blob/main/ferramenta.png" width=600 /></p>
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=EL-BID_guia-de-publicacion&metric=alert_status)](https://sonarcloud.io/dashboard?id=EL-BID_guia-de-publicacion)
 
@@ -30,7 +29,7 @@ O Programa Vem pro Centro busca, por meio de ações de reabilitação, restauro
 ## Guia do usuário
 ---
 
-Toda a documentação das implementações podem ser obtidas no link: https://gebraz.github.io/pdcbid/
+Toda a documentação das implementações podem ser obtidas no link: https://gebraz.github.io/dataViewerApi/build/html/index.html
 
 ## Guia de instalação
 ---
