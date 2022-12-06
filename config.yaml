@@ -63,7 +63,7 @@ app:
                descricao: 'Distribuição da poplação na categorias'                                                                   
      - topico:  
           titulo: 'Habitações Precárias'          
-          descricao: 'Analisaremos algumas informações dos domincílios.'          
+          descricao: 'Analisaremos algumas informações dos domicílios.'          
           mapa1:
                titulo: '**Distribruição de banheiros nas habitações**'
                tabela: pdc_bid_ibge
