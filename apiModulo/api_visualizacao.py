@@ -78,7 +78,7 @@ class ApiVis:
 
         if tipo == 'choro': 
             geo =  dado[dado[variavel].notnull()]
-            geo[variavel] = geo[variavel].astype('float')           
+            #geo[variavel] = geo[variavel].astype('float')           
             choropleth = geo.explore(                
                         m=m,
                         column=variavel,  # make choropleth based on "BoroName" column

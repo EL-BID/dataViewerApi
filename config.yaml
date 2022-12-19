@@ -11,10 +11,10 @@ app:
           tipo: ponto
           info: 'Informações de lotes'
           tabela: lotes_por_ponto
-          campos: finais_prior#finais_divida#finais_estado_de_
-          descricao: 'Prioridade#Divida#Estado de Conservação'
-          popup: finais_de_uso#finais_prior#finais_divida#finais_estado_de_
-          desc_popup: 'Uso#Prioridade#Divida#Estado de Conservação'
+          campos: ocupacao#conservacao#divida_ipt
+          descricao: 'Ocupação#Conservação#Dívida IPTU'
+          popup: ocupacao#conservacao#divida_ipt
+          desc_popup: 'Ocupação#Conservação#Dívida IPTU'
      - camada_padrao:
           tipo: ponto
           info: 'Equipamentos Público'
@@ -168,18 +168,4 @@ app:
                y:   
                     - Quantidade
                tipo: pizza
-               descricao: 'Forma de coleta de lixo nos domicílios.'
-     - topico: 
-          titulo: 'Lotes'          
-          descricao: 'Informação dos lotes na área de interesse'        
-          mapa1:
-               titulo: '**Lotes**'
-               tabela: pdc_bid_lotes
-               camada: lotes                
-               variavel: 'tipologia_finais#conservacao_finais#uso_finais#prioridade_finais#divida'
-               alias: 'Tipologia#Estado de Conservação#Uso#Prioridade#Divida'  
-               descricao: 'Visualização de informações dos lotes da área de análise.'
-               camada_extra: 'equipamento_publico'   
-               camada_interna: '' 
-               camada_base: 'anel_viario'  
-     
+               descricao: 'Forma de coleta de lixo nos domicílios.'     

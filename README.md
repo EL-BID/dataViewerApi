@@ -29,7 +29,7 @@ O Programa Vem pro Centro busca, por meio de ações de reabilitação, restauro
 ## Guia do usuário
 ---
 
-Toda a documentação das implementações podem ser obtidas no link: https://gebraz.github.io/dataViewerApi/build/html/index.html
+Toda a documentação das implementações podem ser obtidas no link: https://el-bid.github.io/dataViewerApi/
 
 ## Guia de instalação
 ---
