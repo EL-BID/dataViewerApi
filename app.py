@@ -7,9 +7,12 @@ import geopandas as gpd
 import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
+import mapclassify
 
 from apiModulo.globals import *
 from apiModulo.api_consulta import ApiConsulta
+from custom_packages.streamlit_folium import st_folium
+
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -205,6 +208,20 @@ def addMapVoronoi(m, camada, area_base, camada_sel):
 
         folium.GeoJson(data=data,style_function=lambda x: {'color': colors[i],  'fillColor': 'darkred'}).add_to(fg)
         
+#Arredonda para 1 casa decimal e converte para string
+def round_str(value):
+    return str(round(value, 1))
+
+#Gera legenda numerica
+def legend_labels(array_bins, lower_value):
+  labels = list()
+  label = round_str(lower_value) + " - " + round_str(array_bins[0])
+  labels.append(label)
+  for i in range(1, len(array_bins)):
+    label = round_str(array_bins[i-1]) + " - " + round_str(array_bins[i])
+    labels.append(label)
+  return labels
+
 def addMap(geo, variavel, alias, 
             camadas_extra=None, 
             camada_interna=None, 
@@ -249,21 +266,49 @@ def addMap(geo, variavel, alias,
 
     #mapa de cores para uma determinada variável             
     geo =  geo[geo[variavel].notnull()]
-    choropleth = geo.explore(                
-                m=m,
-                column=variavel,  # make choropleth based on "BoroName" column
-                scheme="naturalbreaks",  # use mapclassify's natural breaks scheme
-                legend=True, # show legend
-                k=5, # use 5 bins
-                tooltip=[variavel],                
-                #legend_kwds={'loc': 'center left', 'bbox_to_anchor':(1,0.5),'fmt': "{:.0f}"}, # fmt is ignored for categorical data
-                #legend_kwds=dict(colorbar=False), # do not use colorbar
-                name=alias # name of the layer in the map
+    if(geo[variavel].dtype == 'float'):
+        # Separa os bins
+        bins = mapclassify.Quantiles(geo[variavel], k=5).bins
+        #Gera a leganda para os bins numericos
+        labels = legend_labels(bins, geo[variavel].min())
+        
+        geo.explore(                
+            m=m,
+            column=variavel,
+            scheme="UserDefined", 
+            cmap="viridis",
+            classification_kwds= dict(bins=bins),
+            legend=True, 
+            legend_kwds=dict(colorbar=False, labels=labels), 
+            tooltip=[variavel]
             )
-    
-    folium.LayerControl().add_to(m)
 
-    output = st_folium(m, width = 1000, height=500)
+        folium.LayerControl().add_to(m)
+
+        # #Gera o mapa com a versão alterada do st_folium passando as labels e cores da legenda
+        output = st_folium(m, width=1000, height=600,
+            labels=labels,
+            colors=['#440154', '#3B528B', '#21918C', '#5CC863', '#FDE725'],
+            title=str(variavel)
+        )
+    else:
+        geo.explore(                
+            m=m,
+            column=variavel,
+            categorical=True,
+            categories=geo[variavel].unique(),
+            cmap=colors, #Passa as cores para mapa categorico
+            legend=True, 
+            tooltip=[variavel]
+            )
+
+        folium.LayerControl().add_to(m)
+        #Gera o mapa com legendas
+        output = st_folium(m, width=1000, height=600, 
+            labels= geo[variavel].unique(),
+            colors= colors[:len(geo[variavel].unique())], #Passa as cores até o tamanho do numero de labels
+            title=str(variavel)
+            )
     #st.write(output)
 
     global last_layer_id_clicked
