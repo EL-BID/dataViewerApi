@@ -65,33 +65,47 @@ class ApiVis:
         if map is None:
             m = folium.Map(location=MAPA_CENTRO,
                         zoom_start=MAPA_ZOOM,
-                        overlay=False, max_bounds=True)
-
-            #folium.LayerControl().add_to(m)
+                        overlay=False, max_bounds=True)                        
+            
             return m
         else:
             m = map
 
         if dado is None:
             return None
-        
 
         if tipo == 'choro': 
             geo =  dado[dado[variavel].notnull()]
-            #geo[variavel] = geo[variavel].astype('float')           
-            choropleth = geo.explore(                
-                        m=m,
-                        column=variavel,  # make choropleth based on "BoroName" column
-                        scheme="naturalbreaks",  # use mapclassify's natural breaks scheme
-                        legend=True, # show legend
-                        k=5, # use 5 bins
-                        tooltip=[variavel],                
-                        #legend_kwds={'loc': 'center left', 'bbox_to_anchor':(1,0.5),'fmt': "{:.0f}"}, # fmt is ignored for categorical data
-                        #legend_kwds=dict(colorbar=False), # do not use colorbar
-                        name=alias # name of the layer in the map
-                    )
+            try:
+                geo[variavel] = geo[variavel].astype('float')     
+                choropleth = geo.explore(                
+                            m=m,
+                            column=variavel,  # make choropleth based on "BoroName" column
+                            scheme="naturalbreaks",  # use mapclassify's natural breaks scheme
+                            legend=True, # show legend
+                            k=5, # use 5 bins
+                            tooltip=[variavel],                
+                            legend_kwds={'loc': 'center left', 'bbox_to_anchor':(1,0.5),'fmt': "{:.0f}"}, # fmt is ignored for categorical data
+                            #legend_kwds=dict(colorbar=False), # do not use colorbar
+                            name=alias # name of the layer in the map
+                        )                
+            except:
+                choropleth = geo.explore(                
+                            m=m,
+                            column=variavel,  # make choropleth based on "BoroName" column
+                            scheme="naturalbreaks",  # use mapclassify's natural breaks scheme
+                            legend=True, # show legend
+                            k=5, # use 5 bins
+                            tooltip=[variavel],                
+                            #legend_kwds={'loc': 'center left', 'bbox_to_anchor':(1,0.5),'fmt': "{:.0f}"}, # fmt is ignored for categorical data
+                            #legend_kwds=dict(colorbar=False), # do not use colorbar
+                            name=alias # name of the layer in the map
+                        )
+            folium.LayerControl().add_to(m)
+
         if tipo == 'layer':            
-            folium.GeoJson(data=dado["geometria"]).add_to(m)
+            fg = folium.FeatureGroup(name=alias).add_to(m)
+            folium.GeoJson(data=dado["geometria"]).add_to(fg)
 
         if tipo == 'marcador':
             geo =  dado[dado[variavel].notnull()]
@@ -101,14 +115,15 @@ class ApiVis:
             for index, row in geo.iterrows():                                
                 folium.Marker(location=[row['geometria'].y, row['geometria'].x],
                                 icon=folium.Icon(color=colors[ cor ])).add_to(fg)
+            
         if tipo == 'calor':
             geo =  dado[dado[variavel].notnull()]
             coords = []
             for index, row in geo.iterrows():
                 coords.append([row['geometria'].y, row['geometria'].x])
 
-            HeatMap(coords, min_opacity=0.4, blur = 18).add_to(folium.FeatureGroup(name=variavel + 'Heat Map').add_to(m))                
-        
+            HeatMap(coords, min_opacity=0.4, blur = 18).add_to(folium.FeatureGroup(name=variavel + ' Heat Map').add_to(m))                
+            
         return m
 
     #TODO: deveria receber indicardor como uma lista

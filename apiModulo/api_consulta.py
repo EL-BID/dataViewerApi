@@ -289,7 +289,7 @@ class ApiConsulta:
         if index >= 0:
             sql += ' i.id_indicador={0}'.format(index)            
         elif tabela != '' and definicao != '':
-            sql += ' i.tabela=\'{0}\' and i.definicao=\'{1}\''.format(tabela, definicao)
+            sql += ' i.tabela=\'{0}\' and i.definicao in ({1})'.format(tabela, definicao)
         else:
             return
         
