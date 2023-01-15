@@ -60,13 +60,13 @@ class ApiVis:
         self.apiConsulta = ApiConsulta(host, user, database, p)
 
 
-    def visMultiMapa(self, map=None, tipo=None, dado=None,  variavel=None, alias=None, height=1200, width=600, MAPA_ZOOM=14.5):
+    def visMultiMapa(self, map=None, tipo=None, dado=None,  variavel=None, alias=None, height=1200, width=600, MAPA_ZOOM=14.5, style=None):
         
         if map is None:
             m = folium.Map(location=MAPA_CENTRO,
                         zoom_start=MAPA_ZOOM,
-                        overlay=False, max_bounds=True)                        
-            
+                        overlay=True, 
+                        max_bounds=True)   
             return m
         else:
             m = map
@@ -76,6 +76,7 @@ class ApiVis:
 
         if tipo == 'choro': 
             geo =  dado[dado[variavel].notnull()]
+            #fg = folium.FeatureGroup(name=alias, overlay=False).add_to(m)
             try:
                 geo[variavel] = geo[variavel].astype('float')     
                 choropleth = geo.explore(                
@@ -101,11 +102,14 @@ class ApiVis:
                             #legend_kwds=dict(colorbar=False), # do not use colorbar
                             name=alias # name of the layer in the map
                         )
-            folium.LayerControl().add_to(m)
+            #folium.LayerControl().add_to(m)
 
-        if tipo == 'layer':            
+        if tipo == 'layer':        
             fg = folium.FeatureGroup(name=alias).add_to(m)
-            folium.GeoJson(data=dado["geometria"]).add_to(fg)
+            if style is not None:                
+                folium.GeoJson(data=dado["geometria"], style_function=style).add_to(fg)
+            else:   
+                folium.GeoJson(data=dado["geometria"]).add_to(fg)
 
         if tipo == 'marcador':
             geo =  dado[dado[variavel].notnull()]
@@ -118,11 +122,12 @@ class ApiVis:
             
         if tipo == 'calor':
             geo =  dado[dado[variavel].notnull()]
+            
             coords = []
             for index, row in geo.iterrows():
                 coords.append([row['geometria'].y, row['geometria'].x])
 
-            HeatMap(coords, min_opacity=0.4, blur = 18).add_to(folium.FeatureGroup(name=variavel + ' Heat Map').add_to(m))                
+            HeatMap(coords, min_opacity=0.4, blur = 18).add_to(folium.FeatureGroup(name=alias + ' Heat Map').add_to(m))                
             
         return m
 

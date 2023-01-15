@@ -71,8 +71,8 @@ def visMapaIndicador(indicador, height=1200, width=600, MAPA_ZOOM=14.5):
 def visMapaDados(df, metadados, height=1200, width=600, MAPA_ZOOM=14.5):
     return vis.visMapaDados(df, metadados, height=height, width=width, MAPA_ZOOM=MAPA_ZOOM)
 
-def visMultiMapa(map=None, tipo=None, dado=None,  variavel=None, alias=None, height=1200, width=600, MAPA_ZOOM=14.5):
-    return vis.visMultiMapa(map=map, tipo=tipo, dado=dado, variavel=variavel, alias=alias, height=height, width=width, MAPA_ZOOM=MAPA_ZOOM)
+def visMultiMapa(map=None, tipo=None, dado=None,  variavel=None, alias=None, height=1200, width=600, MAPA_ZOOM=14.5, style=None):
+    return vis.visMultiMapa(map=map, tipo=tipo, dado=dado, variavel=variavel, alias=alias, height=height, width=width, MAPA_ZOOM=MAPA_ZOOM, style=style)
 
 def visMapaGJson(gdf, variavel, descricao, height=1200, width=600, MAPA_ZOOM=14.5):
     return vis.visMapaGJson(gdf, variavel=variavel, descricao=descricao, height=height, width=width, MAPA_ZOOM=MAPA_ZOOM)
