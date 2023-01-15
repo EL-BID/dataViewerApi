@@ -1,8 +1,8 @@
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=EL-BID_dataViewerApi&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=EL-BID_dataViewerApi)
+
 <h1 align="center">VemProCentro - PDC</h1>
 <p align="center"><img src="https://github.com/gebraz/dataViewerApi/blob/main/ferramenta.png" width=600 /></p>
-
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=EL-BID_guia-de-publicacion&metric=alert_status)](https://sonarcloud.io/dashboard?id=EL-BID_guia-de-publicacion)
 
 *Esta ferramenta digital faz parte do catálogo de ferramentas do **Banco Interamericano de Desenvolvimento**. Você pode saber mais sobre a iniciativa do BID em [code.iadb.org](https://code.iadb.org)*
 
