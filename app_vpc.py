@@ -41,7 +41,6 @@ style = """
 #globals
 colors = ["red", "blue", "green", "purple", "orange", "darkred",
 "lightred", "darkblue", "darkgreen", "cadetblue", "darkpurple", "pink", "lightblue", "lightgreen", "black"]
-id =1 #id sequencial para componentes visual do streamlit
 
 
 @st.cache(allow_output_mutation=True)
@@ -51,9 +50,6 @@ def loadData():
     #obtendo lotes
     lotes = apiCons.obterCamada('lotes')
 
-    lotes_buffer = apiCons.obterCamada('lotes')
-    lotes_buffer = lotes_buffer.to_crs(3857)
-
     #obtendo lotes por ponto
     lotes['centroid'] =  lotes['geometria'].centroid
 
@@ -61,9 +57,7 @@ def loadData():
     zis = apiCons.obterCamada('zis')
 
     #obtendo linhas de onibus
-    linhas = apiCons.obterCamada('linhas_onibus')
-    linhas_buffer = apiCons.obterCamada('linhas_onibus')
-    linhas_buffer = linhas_buffer.to_crs(3857)
+    linhas = apiCons.obterCamada('linhas_onibus')    
     
     #obtendo tombamento estadual
     tomb_estadual = apiCons.obterCamada('tombamento_estadual')
@@ -86,22 +80,8 @@ def loadData():
     lotes['conservacao'].fillna(value='ND', inplace=True)
     lotes['tipologia_semfaz'].fillna(value='ND', inplace=True)
 
-    return lotes,lotes_buffer,  zis, linhas, linhas_buffer, tomb_estadual, tomb_federal, hdx, equipamentos, domicilios
+    return lotes,  zis, linhas, tomb_estadual, tomb_federal, hdx, equipamentos, domicilios
  
-#Arredonda para 1 casa decimal e converte para string
-def round_str(value):
-    return str(round(value, 1))
-
-#Gera legenda numerica
-def legend_labels(array_bins, lower_value):
-  labels = list()
-  label = round_str(lower_value) + " - " + round_str(array_bins[0])
-  labels.append(label)
-  for i in range(1, len(array_bins)):
-    label = round_str(array_bins[i-1]) + " - " + round_str(array_bins[i])
-    labels.append(label)
-  return labels
-
 def footer():
 
     col1, col2, col3 = st.columns([1, 1, 4])
@@ -121,40 +101,6 @@ def header(content):
     st.title(f"Data Viewer - PDC - {content}")
     #st.markdown(f'<img src="assets/logo.png"/><span class="css-10trblm e16nr0p30">Pdc Viewer - {content} </span>', unsafe_allow_html=True)
 
-def check_password():
-    """Returns `True` if the user had a correct password."""
-
-    def password_entered():
-        """Checks whether a password entered by the user is correct."""        
-        if (
-            st.session_state["username"] in st.secrets["passwords"]
-            and st.session_state["password"]
-            == st.secrets["passwords"][st.session_state["username"]]
-        ):
-            st.session_state["password_correct"] = True
-            #del st.session_state["password"]  # don't store username + password
-            #del st.session_state["username"]
-        else:
-            st.session_state["password_correct"] = False
-
-    if "password_correct" not in st.session_state:
-        # First run, show inputs for username + password.
-        st.text_input("Usuário", key="username")
-        st.text_input("Senha", type="password", on_change=password_entered, key="password"
-        )
-        return False
-    elif not st.session_state["password_correct"]:
-        # Password not correct, show input + error.
-        st.text_input("Username", key="username")
-        st.text_input("Password", type="password", on_change=password_entered, key="password"
-        )
-        st.error("😕 User not known or password incorrect")
-        return False
-    else:
-        # Password correct.
-        return True
-
-
 def main():
     st.markdown(style,unsafe_allow_html=True)
 
@@ -166,7 +112,7 @@ def main():
 
     #monta os temas
     #tabs = st.tabs(topicos)
-    tabs = st.radio('Escolha:', topicos, horizontal=True, index=0)
+    tabs = st.radio('Escolha:', topicos, horizontal=True, index=2)
     
     if tabs == topicos[0]:
         i = 0
@@ -219,17 +165,23 @@ def refresh():
 
 def addMapEsp(ocupacoes_sel, conservacao_sel, area_slides, tipologia_sel, indicador_sel, equipamento_sel, divida_chk, distancia_slider):
     apiVis = ApiVis(host=HOST, user=USER, database=DATABASE, p=PASS)
-
+    
     #ação quando selecionar itens
-    filtrado=lotes
-    lbuffer = linhas_buffer    
     if distancia_slider != "":
-        distancia = int(distancia_slider)        
-        lbuffer = lbuffer.buffer(distance=distancia)
-        filtrado = lotes[lotes_buffer.intersects(lbuffer)]            
-
-
-    filtrado = filtrado[(lotes['AREA_HTL']>=area_slides[0]) & (lotes['AREA_HTL']<=area_slides[1])]    
+        apiCons = ApiConsulta(host=HOST, user=USER, database=DATABASE, p=PASS)
+        linhas_buffer = apiCons.obterCamada('linhas_onibus')
+        linhas_buffer = linhas_buffer.to_crs(3857)
+        lotes_buffer = apiCons.obterCamada('lotes')
+        lotes_buffer = lotes_buffer.to_crs(3857)
+        
+        distancia = int(distancia_slider)     
+        linhas_buffer = linhas_buffer.buffer(distance=distancia*2)    
+        filtrado = lotes_buffer[lotes_buffer.intersects(linhas_buffer)]     
+        filtrado.to_crs(4326)   
+        print(filtrado.shape[0])
+   
+    filtrado = filtrado[(filtrado['AREA_HTL']>=area_slides[0]) & (filtrado['AREA_HTL']<=area_slides[1])]    
+    print(filtrado.shape[0])
     if not "TODAS" in ocupacoes_sel:
         filtrado = filtrado[filtrado['ocupacao'].isin(ocupacoes_sel)]    
     if not "TODAS" in conservacao_sel:    
@@ -264,7 +216,7 @@ def addMapEsp(ocupacoes_sel, conservacao_sel, area_slides, tipologia_sel, indica
     m = apiVis.visMultiMapa(m, tipo='layer', alias='Zona de Interesse Social', dado = zis, style=style_function)
 
     style_function = lambda x: {'fillColor': '#8E44AD', "color": "#8E44AD"}
-    m = apiVis.visMultiMapa(m, tipo='layer', alias='Linhas de ônibus', dado = linhas, style=style_function, visible=False)
+    m = apiVis.visMultiMapa(m, tipo='layer', alias='Linhas de ônibus', dado = linhas, style=style_function, visible=True)
 
     style_function = lambda x: {'fillColor': '#FDFEFE', "color": "#52BE80"}
     m = apiVis.visMultiMapa(m, tipo='layer', alias='Limites Tombamento Estadual', dado = tomb_estadual, style=style_function, visible=False)
@@ -326,10 +278,13 @@ alias_var = ['Selecione', 'População Total (densidade)', 'Esg. fossa séptica'
 #config
 topicos = []
 topicos.append('Lotes para serem usado para habitação')
-topicos.append('Lotes para restauro')
+topicos.append('Lotes para melhorias habitacionais')
 topicos.append('Lotes para serem usados como equipamento público')
 
 #config topico 0
+
+lotes, zis, linhas, tomb_estadual, tomb_federal, hdx, equipamentos, domicilios = loadData()
+
 valores = {
     "topico1":
         {
@@ -350,7 +305,7 @@ valores = {
             "ocupacao" : ['TODAS'],
             "conservacao" : ['TODAS'],
             "area" :(0.0, 125.0),
-            "max" : 1000.0,
+            "max" : 500.0,
             "tipologia": ['TODAS'],
             "divida" : False,
             "indicador": 0,
@@ -362,16 +317,14 @@ valores = {
             "criterio": 'Critérios: Lotes maiores que 250m2 até 400m de uma linha de ônibus',
             "ocupacao" : ['TODAS'],
             "conservacao" : ['TODAS'],
-            "area" :(250.0, 1000.0),
-            "max" : 10000.0,
+            "area" :(250.0, 10000.0),
+            "max" : float(lotes['AREA_HTL'].max()),
             "tipologia": ['TODAS'],
             "divida" : True,
             "indicador": 0,
             "equipamento" : 1,
-            "distancia":"400"
+            "distancia":"800"
         }
 }
-
-lotes, lotes_buffer, zis, linhas, linhas_buffer, tomb_estadual, tomb_federal, hdx, equipamentos, domicilios = loadData()
 
 main()
