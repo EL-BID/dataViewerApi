@@ -60,7 +60,7 @@ class ApiVis:
         self.apiConsulta = ApiConsulta(host, user, database, p)
 
 
-    def visMultiMapa(self, map=None, tipo=None, dado=None,  variavel=None, alias=None, height=1200, width=600, MAPA_ZOOM=14.5, style=None):
+    def visMultiMapa(self, map=None, tipo=None, dado=None,  variavel=None, alias=None, height=1200, width=600, MAPA_ZOOM=14.5, style=None, visible=True):
         
         if map is None:
             m = folium.Map(location=MAPA_CENTRO,
@@ -105,7 +105,7 @@ class ApiVis:
             #folium.LayerControl().add_to(m)
 
         if tipo == 'layer':        
-            fg = folium.FeatureGroup(name=alias).add_to(m)
+            fg = folium.FeatureGroup(name=alias, show=visible).add_to(m)
             if style is not None:                
                 folium.GeoJson(data=dado["geometria"], style_function=style).add_to(fg)
             else:   
@@ -113,7 +113,7 @@ class ApiVis:
 
         if tipo == 'marcador':
             geo =  dado[dado[variavel].notnull()]
-            fg = folium.FeatureGroup(name=alias).add_to(m)
+            fg = folium.FeatureGroup(name=alias, show=visible).add_to(m)
 
             cor = random.randint(0, len(colors)-1)
             for index, row in geo.iterrows():                                
@@ -127,7 +127,7 @@ class ApiVis:
             for index, row in geo.iterrows():
                 coords.append([row['geometria'].y, row['geometria'].x])
 
-            HeatMap(coords, min_opacity=0.4, blur = 18).add_to(folium.FeatureGroup(name=alias + ' Heat Map').add_to(m))                
+            HeatMap(coords, min_opacity=0.4, blur = 18).add_to(folium.FeatureGroup(name=alias + ' Heat Map', show=visible).add_to(m))                
             
         return m
 
