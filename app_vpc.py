@@ -167,6 +167,7 @@ def addMapEsp(ocupacoes_sel, conservacao_sel, area_slides, tipologia_sel, indica
     apiVis = ApiVis(host=HOST, user=USER, database=DATABASE, p=PASS)
     
     #ação quando selecionar itens
+    filtrado = lotes
     if distancia_slider != "":
         apiCons = ApiConsulta(host=HOST, user=USER, database=DATABASE, p=PASS)
         linhas_buffer = apiCons.obterCamada('linhas_onibus')
@@ -178,10 +179,10 @@ def addMapEsp(ocupacoes_sel, conservacao_sel, area_slides, tipologia_sel, indica
         linhas_buffer = linhas_buffer.buffer(distance=distancia*2)    
         filtrado = lotes_buffer[lotes_buffer.intersects(linhas_buffer)]     
         filtrado.to_crs(4326)   
-        print(filtrado.shape[0])
+        #print(filtrado.shape[0])
    
     filtrado = filtrado[(filtrado['AREA_HTL']>=area_slides[0]) & (filtrado['AREA_HTL']<=area_slides[1])]    
-    print(filtrado.shape[0])
+    #print(filtrado.shape[0])
     if not "TODAS" in ocupacoes_sel:
         filtrado = filtrado[filtrado['ocupacao'].isin(ocupacoes_sel)]    
     if not "TODAS" in conservacao_sel:    
