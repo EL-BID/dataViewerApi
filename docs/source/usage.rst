@@ -18,8 +18,8 @@ Em seguida, clonar o projeto no Github:
 
 .. code-block:: console
 
-   (.ENV_NOME) $ git clone https://github.com/gebraz/pdcbid2.git
-   (.ENV_NOME) $ cd pdcbid2
+   (.ENV_NOME) $ git clone https://github.com/EL-BID/dataViewerApi.git
+   (.ENV_NOME) $ cd dataViewerApi
 
 O arquivo requirements.txt possui todos as dependências necessárias e que devem ser 
 instaladas para o funcionamento da PDC.

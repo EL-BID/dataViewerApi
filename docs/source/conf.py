@@ -25,8 +25,11 @@ project = 'PDC-Vem Pro Centro'
 copyright = '2022, Geraldo Braz Júnior e Anselmo Cardoso de Paiva'
 author = 'Geraldo Braz Júnior e Anselmo Cardoso de Paiva'
 
+html_show_copyright=False
+
+
 # The full version, including alpha/beta/rc tags
-release = '0.1'
+release = '0.2'
 
 
 # -- General configuration ---------------------------------------------------
