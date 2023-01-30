@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PDC - Vem Pro Centro - Documentação &mdash; PDC-Vem Pro Centro 0.1 documentation</title>
+  <title>PDC - Vem Pro Centro - Documentação &mdash; PDC-Vem Pro Centro 0.2 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -47,7 +47,6 @@
 <li class="toctree-l1"><a class="reference internal" href="api.html">PDC-API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pdcvis.html">PDC-Visualização</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exemplos.html">Exemplos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="analises.html">Análises</a></li>
 </ul>
 
         </div>
@@ -110,7 +109,6 @@
 <li class="toctree-l1"><a class="reference internal" href="pdc.html">Provas de Conceito</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Como Usar</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="usage.html#instalacao">Instalação</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage.html#configurando-banco-de-dados-postgres">Configurando banco de dados: Postgres</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usage.html#configurar-globals-py">Configurar Globals.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usage.html#como-usar-pdc-api">Como usar PDC-API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usage.html#como-executar-pdc-vis">Como executar PDC-Vis</a></li>
@@ -134,15 +132,7 @@
 <li class="toctree-l1"><a class="reference internal" href="pdcvis.html">PDC-Visualização</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="pdcvis.html#definicao-do-config-yaml">Definição do <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pdcvis.html#exemplo-do-arquivo-config-yaml">Exemplo do arquivo <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="pdcvis.html#module-app">Implementação</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pdcvis.html#app.addGrafico"><code class="docutils literal notranslate"><span class="pre">addGrafico()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pdcvis.html#app.addMap"><code class="docutils literal notranslate"><span class="pre">addMap()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pdcvis.html#app.addMapHeat"><code class="docutils literal notranslate"><span class="pre">addMapHeat()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pdcvis.html#app.addMapMarcador"><code class="docutils literal notranslate"><span class="pre">addMapMarcador()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pdcvis.html#app.addMapVoronoi"><code class="docutils literal notranslate"><span class="pre">addMapVoronoi()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pdcvis.html#app.loadData"><code class="docutils literal notranslate"><span class="pre">loadData()</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="pdcvis.html#implementacao">Implementação</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="exemplos.html">Exemplos</a><ul>
@@ -150,9 +140,6 @@
 <li class="toctree-l2"><a class="reference internal" href="exemplos/criando_indicadores.html">Como inserir indicadores</a></li>
 <li class="toctree-l2"><a class="reference internal" href="exemplos/visualizando.html">Como visualizar indicadores</a></li>
 <li class="toctree-l2"><a class="reference internal" href="exemplos/cruzamento_lotes.html">Como fazer uma junção espacial</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="analises.html">Análises</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="exemplos/analise_domicilios.html">Análise de Infraestrutura de Domicílios</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="exemplos/analise_domicilios.html#Pré-requisitos:">Pré-requisitos:</a></li>
 <li class="toctree-l3"><a class="reference internal" href="exemplos/analise_domicilios.html#Infraestrutura-em-termos-de-abastecimento-de-água:">Infraestrutura em termos de abastecimento de água:</a></li>
@@ -160,12 +147,6 @@
 <li class="toctree-l3"><a class="reference internal" href="exemplos/analise_domicilios.html#Infraestrutura-de-coleta-de-lixo:">Infraestrutura de coleta de lixo:</a></li>
 <li class="toctree-l3"><a class="reference internal" href="exemplos/analise_domicilios.html#Infraestrutura-de-energia:">Infraestrutura de energia:</a></li>
 <li class="toctree-l3"><a class="reference internal" href="exemplos/analise_domicilios.html#Índice-de-Infraestrutura-(IPEA-IVS-UDH)">Índice de Infraestrutura (IPEA IVS UDH)</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="exemplos/analise_renda.html">Análise de Características de Moradores e Renda</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="exemplos/analise_renda.html#Pré-requisitos:">Pré-requisitos:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="exemplos/analise_renda.html#Moradores">Moradores</a></li>
-<li class="toctree-l3"><a class="reference internal" href="exemplos/analise_renda.html#Adicionando-dados-de-UDH">Adicionando dados de UDH</a></li>
 </ul>
 </li>
 </ul>
@@ -191,7 +172,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Geraldo Braz Júnior e Anselmo Cardoso de Paiva.</p>
+    <p></p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

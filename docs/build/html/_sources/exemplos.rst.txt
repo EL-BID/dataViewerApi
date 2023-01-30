@@ -11,4 +11,4 @@ Esta seção apresenta alguns exemplos da utilização da API em Notebooks.
    exemplos/criando_indicadores
    exemplos/visualizando
    exemplos/cruzamento_lotes
-   
+   exemplos/analise_domicilios
