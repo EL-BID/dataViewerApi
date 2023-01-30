@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PDC-Visualização &mdash; PDC-Vem Pro Centro 0.1 documentation</title>
+  <title>PDC-Visualização &mdash; PDC-Vem Pro Centro 0.2 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -49,18 +49,11 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">PDC-Visualização</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#definicao-do-config-yaml">Definição do <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#exemplo-do-arquivo-config-yaml">Exemplo do arquivo <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-app">Implementação</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#app.addGrafico"><code class="docutils literal notranslate"><span class="pre">addGrafico()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#app.addMap"><code class="docutils literal notranslate"><span class="pre">addMap()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#app.addMapHeat"><code class="docutils literal notranslate"><span class="pre">addMapHeat()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#app.addMapMarcador"><code class="docutils literal notranslate"><span class="pre">addMapMarcador()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#app.addMapVoronoi"><code class="docutils literal notranslate"><span class="pre">addMapVoronoi()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#app.loadData"><code class="docutils literal notranslate"><span class="pre">loadData()</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#implementacao">Implementação</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="exemplos.html">Exemplos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analises.html">Análises</a></li>
 </ul>
 
         </div>
@@ -436,128 +429,8 @@ em seguência: 1, 2, 3</p>
 </pre></div>
 </div>
 </section>
-<section id="module-app">
-<span id="implementacao"></span><h2>Implementação<a class="headerlink" href="#module-app" title="Permalink to this heading"></a></h2>
-<table class="autosummary longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#app.loadData" title="app.loadData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">app.loadData</span></code></a>(conf)</p></td>
-<td><p>Load de todos os dados informados no YAML</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#app.addMapMarcador" title="app.addMapMarcador"><code class="xref py py-obj docutils literal notranslate"><span class="pre">app.addMapMarcador</span></code></a>(m, camada, camada_sel)</p></td>
-<td><p>Adiciona marcados (pontos) num mapa</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#app.addMapHeat" title="app.addMapHeat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">app.addMapHeat</span></code></a>(m, camada, camada_sel)</p></td>
-<td><p>A partir dos pontos selecionados, cria um mapa de calor</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#app.addMapVoronoi" title="app.addMapVoronoi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">app.addMapVoronoi</span></code></a>(m, camada, area_base, ...)</p></td>
-<td><p>A partir dos pontos selecionados, cria um mapa de Voronoi</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#app.addMap" title="app.addMap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">app.addMap</span></code></a>(geo, variavel, alias[, ...])</p></td>
-<td><p>Função básica para inclusão de mapas</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#app.addGrafico" title="app.addGrafico"><code class="xref py py-obj docutils literal notranslate"><span class="pre">app.addGrafico</span></code></a>(data, variaveis, ...[, agg])</p></td>
-<td><p>Gera gráficos de acordo com a configuração informada no YAML</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="py function">
-<dt class="sig sig-object py" id="app.addGrafico">
-<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">addGrafico</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variaveis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variaveis_alias</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alias</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tipo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sum'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/app.html#addGrafico"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.addGrafico" title="Permalink to this definition"></a></dt>
-<dd><p>Gera gráficos de acordo com a configuração informada no YAML</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> – dados para construção do gráfico</p></li>
-<li><p><strong>variaveis</strong> – colunas a serem coletadas de data</p></li>
-<li><p><strong>variaveis_alias</strong> – nome formatado das variáveis</p></li>
-<li><p><strong>alias</strong> – filtro selecionado na interface gráfica</p></li>
-<li><p><strong>tipo</strong> – tipo do mapa, configurado no YAML</p></li>
-<li><p><strong>agg</strong> – </p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="app.addMap">
-<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">addMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variavel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alias</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camadas_extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camada_interna</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camada_base</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ponto_tipo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Marcador'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/app.html#addMap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.addMap" title="Permalink to this definition"></a></dt>
-<dd><p>Função básica para inclusão de mapas</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>geo</strong> – camada geográfica e dados</p></li>
-<li><p><strong>variavel</strong> – informação que deve ser exibida no mapa, numa escala de cor</p></li>
-<li><p><strong>alias</strong> – nome formatado da variável</p></li>
-<li><p><strong>camadas_extra</strong> – informação de camada adicional a ser inserida por seleção</p></li>
-<li><p><strong>camadas_interna</strong> – informação de camada adicional a ser inserida por padrão</p></li>
-<li><p><strong>camadas_base</strong> – limites da área de interesse, usado pelo voronoi</p></li>
-<li><p><strong>ponto_tipo</strong> – Marcador - Calor ou Voronoi</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="app.addMapHeat">
-<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">addMapHeat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camada</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camada_sel</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/app.html#addMapHeat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.addMapHeat" title="Permalink to this definition"></a></dt>
-<dd><p>A partir dos pontos selecionados, cria um mapa de calor</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>camada</strong> – camada previamente informada com os pontos</p></li>
-<li><p><strong>camada_sel</strong> – filtro selecionado na interface gráfica</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="app.addMapMarcador">
-<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">addMapMarcador</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camada</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camada_sel</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/app.html#addMapMarcador"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.addMapMarcador" title="Permalink to this definition"></a></dt>
-<dd><p>Adiciona marcados (pontos) num mapa</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>camada</strong> – camada previamente informada com os pontos</p></li>
-<li><p><strong>camada_sel</strong> – filtro selecionado na interface gráfica</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="app.addMapVoronoi">
-<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">addMapVoronoi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camada</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">area_base</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camada_sel</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/app.html#addMapVoronoi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.addMapVoronoi" title="Permalink to this definition"></a></dt>
-<dd><p>A partir dos pontos selecionados, cria um mapa de Voronoi</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>camada</strong> – camada previamente informada com os pontos</p></li>
-<li><p><strong>area_base</strong> – geometria base para filtrar os limites do voronoi</p></li>
-<li><p><strong>camada_sel</strong> – filtro selecionado na interface gráfica</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="app.loadData">
-<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">loadData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conf</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/app.html#loadData"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.loadData" title="Permalink to this definition"></a></dt>
-<dd><p>Load de todos os dados informados no YAML</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>conf</strong> – dicionário vindo da leitura do YAML</p>
-</dd>
-<dt class="field-even">Return data, georet</dt>
-<dd class="field-even"><p>dados e camadas espaciais</p>
-</dd>
-</dl>
-</dd></dl>
-
+<section id="implementacao">
+<h2>Implementação<a class="headerlink" href="#implementacao" title="Permalink to this heading"></a></h2>
 </section>
 </section>
 
@@ -572,7 +445,7 @@ em seguência: 1, 2, 3</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Geraldo Braz Júnior e Anselmo Cardoso de Paiva.</p>
+    <p></p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

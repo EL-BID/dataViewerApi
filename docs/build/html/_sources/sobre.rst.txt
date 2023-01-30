@@ -10,8 +10,6 @@ A cidade de São Luís, com 1,1 milhão de habitantes, é a capital do estado do
 
 As consultorias são totalmente interligadas uma vez que a primeira promove a coleta, análise e diagnóstico de dados abertos e restritos e a segunda consultoria deve orientar o processo de diagnóstico que deve incluir mecanismos de curadoria, qualidade, pré-processamento e limpeza de dados, para que estes possam ser adequadamente em provas de conceito a serem construídas como um dos objetivos da segunda consultoria. 
 
-A prefeitura de São Luís escolheu trabalhar as análises desta consultoria voltadas para dados da área de Saúde, com foco em epidemiologia, acidentes e distribuição de atendimento. Outro requisito importante a ser considerado foi que as provas de conceitos a serem desenvolvidas devem levar em consideração o fator de localização espacial dos dados. 
-
 Como forma de subsidiar o processo de diagnóstico dos dados fornecidos pela prefeitura e coletados em base de dados abertos, esta prova de conceito tem como finalidade apresentar uma solução para auxílio neste processo, especificamente no cenário do Programa Vem pro Centro.
 
 Programa Vem pro Centro

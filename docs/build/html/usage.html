@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Como Usar &mdash; PDC-Vem Pro Centro 0.1 documentation</title>
+  <title>Como Usar &mdash; PDC-Vem Pro Centro 0.2 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -46,6 +46,7 @@
 <li class="toctree-l1"><a class="reference internal" href="pdc.html">Provas de Conceito</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Como Usar</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#instalacao">Instalação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configurando-banco-de-dados-postgres">Configurando banco de dados: Postgres</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#configurar-globals-py">Configurar Globals.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#como-usar-pdc-api">Como usar PDC-API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#como-executar-pdc-vis">Como executar PDC-Vis</a></li>
@@ -54,6 +55,7 @@
 <li class="toctree-l1"><a class="reference internal" href="api.html">PDC-API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pdcvis.html">PDC-Visualização</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exemplos.html">Exemplos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analises.html">Análises</a></li>
 </ul>
 
         </div>
@@ -116,8 +118,8 @@ Recomenda-se o uso de um gerenciador de envs.</p>
 </pre></div>
 </div>
 <p>Em seguida, clonar o projeto no Github:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(.ENV_NOME)</span> <span class="gp">$ </span>git clone https://github.com/gebraz/pdcbid2.git
-<span class="gp gp-VirtualEnv">(.ENV_NOME)</span> <span class="gp">$ </span><span class="nb">cd</span> pdcbid2
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(.ENV_NOME)</span> <span class="gp">$ </span>git clone https://github.com/EL-BID/dataViewerApi.git
+<span class="gp gp-VirtualEnv">(.ENV_NOME)</span> <span class="gp">$ </span><span class="nb">cd</span> dataViewerApi
 </pre></div>
 </div>
 <p>O arquivo requirements.txt possui todos as dependências necessárias e que devem ser
@@ -125,6 +127,23 @@ instaladas para o funcionamento da PDC.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(.ENV_NOME)</span> <span class="gp">$ </span>pip install -r requirements.txt
 </pre></div>
 </div>
+</section>
+<section id="configurando-banco-de-dados-postgres">
+<h2>Configurando banco de dados: Postgres<a class="headerlink" href="#configurando-banco-de-dados-postgres" title="Permalink to this heading"></a></h2>
+<p>Essa solução utiliza o banco de dados Postgres com a extensão Postgis. Após a instalação do mesmo,
+disponibilizamos um dump inicial da base de dados com dados no IBGE (feito com o PGAdmin). Para restaurar o dump, siga os passo:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Crie um database chamado “pdc” com owner “postgres” [se preferir crie com outro usuário, mas este deve ser owner do database]</p></li>
+<li><p>Adicione a extensão espacial ao database. Abra um psql e digite:</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">create</span><span class="w"> </span><span class="n">extension</span><span class="w"> </span><span class="n">postgis</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Abra o PGAdmin e selecione a opção “restore”, selecionando o aruqivo do pdc.dump</p></li>
+</ul>
+</div></blockquote>
 </section>
 <section id="configurar-globals-py">
 <h2>Configurar Globals.py<a class="headerlink" href="#configurar-globals-py" title="Permalink to this heading"></a></h2>
@@ -172,7 +191,7 @@ sys.path.append(“/path/to/dir/apiModulo”)
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Geraldo Braz Júnior e Anselmo Cardoso de Paiva.</p>
+    <p></p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

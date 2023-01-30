@@ -14,8 +14,9 @@ PDC - Vem Pro Centro - Documentação
    pdc
    usage
    api
-   pdcvis
+   pdcvis 
    exemplos
+   analises
    
 
 Índices
