@@ -4,7 +4,7 @@
 <h1 align="center">DataIntegrationAPI - Vem Pro Centro</h1>
 <p align="center"><img src="https://github.com/gebraz/dataViewerApi/blob/main/api.png" width=600 /></p>
 
-*Esta ferramenta digital faz parte do catálogo de ferramentas do **Banco Interamericano de Desenvolvimento**. Você pode saber mais sobre a iniciativa do BID em [code.iadb.org](https://code.iadb.org)*
+*Esta ferramenta digital faz parte do catálogo de ferramentas do **Banco Interamericano de Desenvolvimento**. Você pode saber mais sobre a iniciativa do BID em [https://knowledge.iadb.org/pt-br/codigo-para-o-desenvolvimento](https://knowledge.iadb.org/pt-br/codigo-para-o-desenvolvimento)*
 
 
 ## Tabela de conteúdos:
