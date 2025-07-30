@@ -3,7 +3,7 @@
 <h1 align="center">VemProCentro - PDC</h1>
 <p align="center"><img src="https://github.com/gebraz/dataViewerApi/blob/main/ferramenta.png" width=600 /></p>
 
-*Esta ferramenta digital faz parte do catálogo de ferramentas do **Banco Interamericano de Desenvolvimento**. Você pode saber mais sobre a iniciativa do BID em [[code.iadb.org](https://knowledge.iadb.org/pt-br/codigo-para-o-desenvolvimento)](https://knowledge.iadb.org/pt-br/codigo-para-o-desenvolvimento)*
+*Esta ferramenta digital faz parte do catálogo de ferramentas do **Banco Interamericano de Desenvolvimento**. Você pode saber mais sobre a iniciativa do BID em [https://knowledge.iadb.org/pt-br/codigo-para-o-desenvolvimento](https://knowledge.iadb.org/pt-br/codigo-para-o-desenvolvimento)*
 
 
 ## Tabela de conteúdos:
